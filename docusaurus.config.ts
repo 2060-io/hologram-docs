@@ -187,10 +187,6 @@ const config: Config = {
             {
               label: 'Website',
               href: 'https://hologram.zone',
-            },
-            {
-              label: 'Foundation Website',
-              href: 'https://verana.foundation',
             }
             
           ],
