@@ -49,6 +49,6 @@ jobs:
         if: >
           success()
           && github.ref == 'refs/heads/main'
-          && github.repository == 'verana-labs/verana-docs'
+          && github.repository == '2060-io/hologram-docs'
         uses: actions/deploy-pages@v4
   
