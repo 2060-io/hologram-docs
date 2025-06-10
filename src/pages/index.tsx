@@ -26,7 +26,7 @@ export default function Home(): JSX.Element {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Welcome to Verana Verifiable Trust`}
+      title={`Welcome!`}
       description={siteConfig.tagline}>
       <HomepageHeader />
       <main>
