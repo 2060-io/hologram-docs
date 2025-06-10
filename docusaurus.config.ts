@@ -92,11 +92,11 @@ const config: Config = {
     metadata: [
       {name: 'twitter:card', content: 'summary_large_image'},
       {name: 'twitter:title', content: 'Hologram'},
-      {name: 'twitter:description', content: 'Building an open, decentralized trust layer for the Internet'},
+      {name: 'twitter:description', content: 'Private messaging meets Verifiable IA'},
       {name: 'twitter:image', content: 'https://docs.hologram.zone/img/hologram-docs-og.jpg'},
   
       {property: 'og:title', content: 'Hologram'},
-      {property: 'og:description', content: 'Building an open, decentralized trust layer for the Internet'},
+      {property: 'og:description', content: 'Private messaging meets Verifiable IA'},
       {property: 'og:type', content: 'website'},
       {property: 'og:url', content: 'https://docs.hologram.zone'},
       {property: 'og:image', content: 'https://docs.hologram.zone/img/hologram-docs-og.jpg'},
