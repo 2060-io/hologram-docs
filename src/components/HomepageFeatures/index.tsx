@@ -26,7 +26,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Build',
     Svg: require('@site/static/img/use.svg').default,
-    to: '/docs/next/use/intro',
+    to: '/docs/next/build/intro',
     description: (
       <>
         Learn how to build verifiable, decentralized AI services with secure messaging, biometrics, NFC ID reading, credential flows, ethical monetization, and DID-based discoverability.
