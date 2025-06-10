@@ -1,1 +1,0 @@
-# Verifiable Service DID Directory

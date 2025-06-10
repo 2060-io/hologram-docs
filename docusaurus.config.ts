@@ -127,16 +127,11 @@ const config: Config = {
         },
         {
           type: 'docSidebar',
-          sidebarId: 'useSidebar',
+          sidebarId: 'buildSidebar',
           position: 'left',
-          label: 'Use',
+          label: 'Build',
         },
-        {
-          type: 'docSidebar',
-          sidebarId: 'networkSidebar',
-          position: 'left',
-          label: 'Network',
-        },
+       
         
         {
           href: 'https://github.com/2060-io',
