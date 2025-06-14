@@ -1,0 +1,35 @@
+# .github/workflows/deploy.yml
+
+name: Build Docusaurus
+
+on:
+  push:
+    branches:
+      - feat/*
+      - fix/*
+
+  workflow_dispatch:
+
+permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'  # Use the Node.js version compatible with your Docusaurus build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
