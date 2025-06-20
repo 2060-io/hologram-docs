@@ -1,4 +1,4 @@
-# Hologram SDK docs howto
+# Help for those that want to contribute to documentation
 
 ## Plantuml
 
