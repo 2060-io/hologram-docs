@@ -15,7 +15,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Learn',
     Svg: require('@site/static/img/learn.svg').default,
-    to: '/docs/next/learn/intro',
+    to: '/docs/next/learn/introduction',
     description: (
       <>
         Learn how to build verifiable, decentralized AI services with secure messaging, biometrics, NFC ID reading, credential flows, ethical monetization, and DID-based discoverability.
