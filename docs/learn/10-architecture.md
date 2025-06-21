@@ -165,7 +165,7 @@ Purpose of a VPR is to answer these questions:
 - can participant #1 **issue credential** for schema ABC of ecosystem E1?
 - can participant #2 request **credential presentation** of credential issued by issuer DEF from schema GHI of ecosystem E2 in context CONTEXT?
 
-[VPRs are detailed here](../verifiable-public-registry/20-trust-registries.md)
+[VPRs are detailed here](https://docs.verana.io/docs/next/learn/verifiable-public-registry/trust-registries)
 
 ### DID Directory
 
