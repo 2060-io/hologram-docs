@@ -2,7 +2,7 @@
 
 **Private Messaging Meets Verifiable AI**  
 
-Hologram is an open source with GNU AFFERO GENERAL PUBLIC LICENSE Version 3 licence. Hologram provides secure conversations, verifiable services and verifiable AI agents, backed by decentralized identity and verifiable credentials.
+Hologram is an open source mobile app that provides secure conversations, verifiable services and verifiable AI agents, backed by decentralized identity and verifiable credentials.
 
 <Image url="/img/download-hologram.png" floating="right" align="center" maxWidth="200px" border="1px solid #DDDDDD" caption="Scan with your mobile device"/>
 
