@@ -1,11 +1,11 @@
 import React from 'react';
 
-export default function Image({url, floating, caption, maxWidth}) {
+export default function Image({url, floating, caption, maxWidth, align, border}) {
   return (
     
     <figure 
     style={{
-      textAlign: 'center',
+      textAlign: align,
       fontStyle: 'italic',
       fontSize: 'smaller',
       textIndent: '0',
@@ -23,7 +23,8 @@ export default function Image({url, floating, caption, maxWidth}) {
       
       style={{
         maxWidth: maxWidth,
-        border: '1px solid #DDDDDD', 
+        border: border,
+        //border: '1px solid #DDDDDD', 
         marginTop: '0.5em',
         marginBottom: '0.3em',
         marginRight: '0.5em',

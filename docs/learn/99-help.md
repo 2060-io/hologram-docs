@@ -51,3 +51,6 @@ buildSidebar: [
     ],
 
 ```
+
+<Image url="/img/what-is-hologram.png" floating="none" align="left" maxWidth="500px" border="1px solid #DDDDDD" caption="Hologram" align="center"/>
+
