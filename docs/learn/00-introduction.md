@@ -1,8 +1,32 @@
 # Introduction
 
-Hologram is an open-source messaging and agent platform that lets users and businesses run decentralized, end-to-end-encrypted chats, calls and AI agents.
+Messaging Apps are widely used for personal peer to peer connections. Lately, its usage for business services is exploding.
 
-Every agent or service proves its identity with verifiable credentials, giving users cryptographic Proof-of-Trust instead of relying on centralized platforms or intermediaries.
+**But there is a catch**: if existing messaging channels are sometimes private for peer to peer communication, **B2C services totally lack privacy**.
+
+Added to this, the ability to identify (a verifiable way) who is behind a service (or who I am talking to in peer to peer private messaging) **is nonexistent in all popular apps**.
+
+## For Person-to-Person Use
+
+Here is a summary for person-to-person interaction for most popular apps.
+
+| Channel   | Privacy  | Security | Auditability | Peer Authentication |
+|-----------|----------|----------|------------|-----------------|
+| **Signal**   | 🟢 Very High | 🟢 Very High | 🟢 Very High | 🔴 None |
+| **WhatsApp** | 🟠 Medium | 🟠 Medium      | 🔴 None | 🔴 None |
+| **Telegram** | 🟡 High | 🟡 High      | 🟢 Very High     | 🔴 None |
+| **Hologram** | 🟢 Very High | 🟢 Very High | 🟢 Very High | 🟢 Yes, Verifiable Credential exchange |
+
+## For Providing Business Services and/or AI agents to Users
+
+Same table but this time for business services and/or AI agents.
+
+| Channel   | Privacy  | Security | Auditability |Price | Service Type | Peer Authentication |
+|-----------|----------|----------|------------|-------------|------------|------------|
+| **Signal**   | N/A | N/A | N/A | N/A | N/A | N/A |
+| **WhatsApp** | 🔴 No privacy | 🔴 Very Low      | 🔴 None | 🔴 Expensive (price per conversation and per message) | 🟠 Centralized | 🟠 Unverifiable or Verified by Meta |
+| **Telegram** | 🔴 No privacy | 🔴 Very Low      | 🟢 Very High     |  🟢 Free | 🟠 Centralized | 🔴 None |
+| **Hologram** | 🟢 Very High | 🟢 Very High | 🟢 Very High        | 🟢 Free | 🟢 Decentralized | 🟢 Yes, Verifiable Credential exchange |
 
 ## 🚨 Problems with Most Popular Messaging Services
 
@@ -36,6 +60,10 @@ Every agent or service proves its identity with verifiable credentials, giving u
 > **Bottom line:** users and organizations trade convenience for hidden costs, loss of privacy, vendor lock-in, and uncertainty about who or what they’re really talking to.
 
 ## 🌟 How Hologram Solves These Problems
+
+In contrast, Hologram is an open-source messaging and AI agent App+SDK that let users and businesses run **decentralized, end-to-end-encrypted and powerful chats based service**.
+
+Every agent or service proves its identity with verifiable credentials, giving users cryptographic **Proof-of-Trust** instead of relying on centralized platforms or intermediaries.
 
 1. 🏢 **Decentralized Control**  
    Hologram uses **DIDComm peer-to-peer encryption** and lets you self-host your services and/or deploy them to any hosting company. No single server can block, censor, or subpoena the whole network.
