@@ -13,7 +13,7 @@ To complete this tutorial, you will need any Linux/MacOS-based computer with:
 
 ### VS Agent set-up
 
-To issue credentials, VS Agent setup is nearly the same as the previously seen [Simple VS](./10-simple-vs.md#making-your-vs-accessible). However, for that VS and for the sake of simplicity, we didn't set up a **public DID**. This identifier is mandatory when it comes to issue credentials and to conform with Verifiable Trust network, so it is important to always set it up. 
+To issue credentials, VS Agent setup is nearly the same as the previously seen [Minimal VS](./10-minimal-vs.md#making-your-vs-accessible). However, for that VS and for the sake of simplicity, we didn't set up a **public DID**. This identifier is mandatory when it comes to issue credentials and to conform with Verifiable Trust network, so it is important to always set it up. 
 
 But don't worry! Configuring our DID is as simple as defining `AGENT_PUBLIC_DID` environment variable. Currently, VS Agent only supports the [web DID Method](https://w3c-ccg.github.io/did-method-web/), so our DID will have the format: `did:web:[your-public-host]`.
 

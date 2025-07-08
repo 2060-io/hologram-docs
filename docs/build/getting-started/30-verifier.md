@@ -75,7 +75,7 @@ Again, you can take shortUrl to use for QR code scanning in Hologram App.
 
 In the request, you'll note that we are specifying a **callback URL**: this is the endpoint where VS Agent will post updates about the flow (e.g. user scanned the code, user accepted the presentation, etc.). **ref** is an arbitrary string that we might use to identify the flow in case we use the same endpoint to get updates for all presentation flows.
 
-So let's update our `message-logger.ts` (the one from [Simple VS tutorial](./10-simple-vs.md#receiving-text-messages)) by adding a `presentations` endpoint:
+So let's update our `message-logger.ts` (the one from [Minimal VS tutorial](./10-minimal-vs.md#receiving-text-messages)) by adding a `presentations` endpoint:
 
 ```ts
 import express from 'express'
