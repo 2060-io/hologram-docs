@@ -36,17 +36,16 @@ ngrok http 3001
 This will create a tunnel with a temporary HTTP address.
 :::
 
-Once we get our public address, we will need to provide our VS Agent instance two environment variables:
+Once we get our public address, we will need to provide our VS Agent a public DID (decentralized identifier). This identifier is mandatory when it comes to issue credentials and to conform with Verifiable Trust network, so it is important to always set it up. 
 
-- **PUBLIC_API_BASE_URL**: the HTTP URL (including protocol, host and port) where public API is accessible. For instance, `https://didcomm.myhost.com` or `https://9508-200-11-132-214.ngrok-free.app`
-- **AGENT_ENDPOINTS**: comma-separated base URLs for DIDComm communication (e.g. to exchange messages with Hologram App). VS Agent currently support both WebSockets (wss) and HTTP (http), being the first one recommended for minimum latency. So, following the examples, we can set it to `wss://didcomm.myhost.com` or `wss://9508-200-11-132-214.ngrok-free.app`
+But don't worry! Configuring our DID is as simple as defining `AGENT_PUBLIC_DID` environment variable. Currently, VS Agent only supports the [web DID Method](https://w3c-ccg.github.io/did-method-web/), so our DID will have the format: `did:web:[your-public-host]`.
+which corresponds to the external URL the agent is accessible by. VS Agent currently uses Web DID method, so this value will be did:web:[hostname]. For example, `did:web:myhost.com` or `did:web:508-200-11-132-214.ngrok-free.app`.
 
 This is enough for we to get a basic VS Agent app and running. So let's run it:
 
 ```bash
 docker run -p 3001:3001 -p 3000:3000 \
-  -e PUBLIC_API_BASE_URL=https://myhost.ngrok-free.app \
-  -e AGENT_ENDPOINTS=wss://myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   --name vs-agent io2060/vs-agent:dev
 ```
 
@@ -73,8 +72,7 @@ Let's run it again and see what happens:
 
 ```
 docker run -p 3001:3001 -p 3000:3000 \
-  -e PUBLIC_API_BASE_URL=https://myhost.ngrok-free.app \
-  -e AGENT_ENDPOINTS=wss://myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \
   --name io2060/vs-agent:dev
@@ -193,8 +191,7 @@ To make VS Agent aware of our backend, we simply need to set `EVENTS_BASE_URL` e
 ```
 docker run -p 3001:3001 -p 3000:3000 \
   -e EVENTS_BASE_URL=http://our-local-ip:4001 \
-  -e PUBLIC_API_BASE_URL=https://myhost.ngrok-free.app \
-  -e AGENT_ENDPOINTS=wss://myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
   --name vs-agent io2060/vs-agent:dev

@@ -13,9 +13,7 @@ To complete this tutorial, you will need any Linux/MacOS-based computer with:
 
 ### VS Agent set-up
 
-To issue credentials, VS Agent setup is nearly the same as the previously seen [Minimal VS](./10-minimal-vs.md#making-your-vs-accessible). However, for that VS and for the sake of simplicity, we didn't set up a **public DID**. This identifier is mandatory when it comes to issue credentials and to conform with Verifiable Trust network, so it is important to always set it up. 
-
-But don't worry! Configuring our DID is as simple as defining `AGENT_PUBLIC_DID` environment variable. Currently, VS Agent only supports the [web DID Method](https://w3c-ccg.github.io/did-method-web/), so our DID will have the format: `did:web:[your-public-host]`.
+To issue credentials, VS Agent setup is exactly the same as the previously seen [Minimal VS](./10-minimal-vs.md#making-your-vs-accessible). 
 
 Let's run our issuer VS Agent:
 
@@ -23,8 +21,6 @@ Let's run our issuer VS Agent:
 docker run -p 3001:3001 -p 3000:3000 \
   -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e EVENTS_BASE_URL=http://your-local-ip:4001 \
-  -e PUBLIC_API_BASE_URL=https://myhost.ngrok-free.app \
-  -e AGENT_ENDPOINTS=wss://myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
   --name vs-agent io2060/vs-agent:dev

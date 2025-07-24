@@ -22,8 +22,6 @@ So let's run our verifier VS Agent:
 docker run -p 3001:3001 -p 3000:3000 \
   -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e EVENTS_BASE_URL=http://your-local-ip:4001 \
-  -e PUBLIC_API_BASE_URL=https://myhost.ngrok-free.app \
-  -e AGENT_ENDPOINTS=wss://myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
   --name vs-agent io2060/vs-agent:dev
