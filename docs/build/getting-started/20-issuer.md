@@ -19,7 +19,7 @@ Let's run our issuer VS Agent:
 
 ```
 docker run -p 3001:3001 -p 3000:3000 \
-  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:webvh:myhost.ngrok-free.app \
   -e EVENTS_BASE_URL=http://your-local-ip:4001 \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
@@ -30,7 +30,9 @@ docker run -p 3001:3001 -p 3000:3000 \
 
 ### Creating credential types
 
-In order to issue credentials, we need to use a certain schema that defines how they are structured. VS Agent issues [AnonCreds](https://hyperledger.github.io/anoncreds-spec/) credentials, whose schemas (called **Credential Definitions**) are composed by name-value pairs called **attributes**.
+In order to issue a Verifiable Trust Credential, we need to use a certain schema that defines how they is structured. VS Agent supports two different formats to issue credentials: [AnonCreds](https://hyperledger.github.io/anoncreds-spec/) and W3C JSON-LD credentials.
+
+, whose schemas (called **Credential Definitions**) are composed by name-value pairs called **attributes**.
 
 VS Agent provides a simplified interface to create credential types. To create a new type, we can go to VS Agent's Swagger API site at http://localhost:3000/api and scroll to [**POST /v1/credential-types**](http://localhost:3000/api#/credential-types/CredentialTypesController_createCredentialType) method.
 
@@ -54,7 +56,7 @@ VS Agent will respond with the following body:
 
 ```json
 {
-  "id": "did:web:myhost.ngrok-free.app?service=anoncreds&relativeRef=/credDef/Bs1u5uMio2EbcdYgpTYqXu1xPnGYaeZv1JswMN2VfoTi",
+  "id": "did:webvh:myhost.ngrok-free.app?service=anoncreds&relativeRef=/credDef/Bs1u5uMio2EbcdYgpTYqXu1xPnGYaeZv1JswMN2VfoTi",
   "attributes": [
     "firstName",
     "lastName",
@@ -62,7 +64,7 @@ VS Agent will respond with the following body:
   ],
   "name": "User",
   "version": "1.0",
-  "schemaId": "did:web:myhost.ngrok-free.app?service=anoncreds&relativeRef=/schema/ELNR8tNz535R8fc6EAw7SFpe2eokVyNCoAdQJgJ7jVnW"
+  "schemaId": "did:webvh:myhost.ngrok-free.app?service=anoncreds&relativeRef=/schema/ELNR8tNz535R8fc6EAw7SFpe2eokVyNCoAdQJgJ7jVnW"
 }
 ```
 
@@ -77,7 +79,7 @@ The process is quite simple: in Swagger interface, we scroll to [POST /v1/invita
 
 ```json
 {
-  "credentialDefinitionId": "did:web:myhost.ngrok-free.app?service=anoncreds&relativeRef=/credDef/Bs1u5uMio2EbcdYgpTYqXu1xPnGYaeZv1JswMN2VfoTi",
+  "credentialDefinitionId": "did:webvh:myhost.ngrok-free.app?service=anoncreds&relativeRef=/credDef/Bs1u5uMio2EbcdYgpTYqXu1xPnGYaeZv1JswMN2VfoTi",
   "claims": [
     {
       "name": "firstName",

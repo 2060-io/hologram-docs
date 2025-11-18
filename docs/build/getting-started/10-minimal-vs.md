@@ -38,14 +38,15 @@ This will create a tunnel with a temporary HTTP address.
 
 Once we get our public address, we will need to provide our VS Agent a public DID (decentralized identifier). This identifier is mandatory when it comes to issue credentials and to conform with Verifiable Trust network, so it is important to always set it up. 
 
-But don't worry! Configuring our DID is as simple as defining `AGENT_PUBLIC_DID` environment variable. Currently, VS Agent only supports the [web DID Method](https://w3c-ccg.github.io/did-method-web/), so our DID will have the format: `did:web:[your-public-host]`.
-which corresponds to the external URL the agent is accessible by. VS Agent currently uses Web DID method, so this value will be did:web:[hostname]. For example, `did:web:myhost.com` or `did:web:508-200-11-132-214.ngrok-free.app`.
+But don't worry! Configuring our DID is as simple as defining `AGENT_PUBLIC_DID` environment variable. VS Agent supports both [did:webvh Method](https://identity.foundation/didwebvh/v1.0/) and [web DID Method](https://w3c-ccg.github.io/did-method-web/). We recommend to use did:webvh, so our DID will have the format: `did:webvh:{SCID}:[your-public-host]`, being SCID a self-certifying identifier generated automatically when first creating the DID. An example DID could be
 
-This is enough for we to get a basic VS Agent app and running. So let's run it:
+`did:webvh:QmcFutxX32rkFDZpBWYozbVWz7sBbbTZ49k4saazirKZqE:myhost.com` or `did:webvh:QmcFutxX32rkFDZpBWYozbVWz7sBbbTZ49k4saazirKZqE:508-200-11-132-214.ngrok-free.app`.
+
+This is enough for we to get a basic VS Agent up and running. So let's run it:
 
 ```bash
 docker run -p 3001:3001 -p 3000:3000 \
-  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:webvh:myhost.ngrok-free.app \
   --name vs-agent io2060/vs-agent:dev
 ```
 
@@ -72,7 +73,7 @@ Let's run it again and see what happens:
 
 ```
 docker run -p 3001:3001 -p 3000:3000 \
-  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:webvh:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \
   --name io2060/vs-agent:dev
@@ -96,7 +97,7 @@ For this purpose we will need to use two methods from [VS Agent Admin API](https
 
 #### Identifying user's connection id
 
-Each Hologram app instance connected to our VS Agent has a `DIDComm connection`. We are interested in knowing its `id`, so we can use it afterwards to send the message. So we can go and execute [**GET /v1/connections**](http://localhost:3000/api#/connections/ConnectionController_getAllConnections) method. The response will be an array of a single element, since we've just set up our agent:
+Each Hologram app instance connected to our VS Agent is a `DIDComm connection`. We are interested to know its `id`, so we can use it afterwards to send the message. So we can go and execute [**GET /v1/connections**](http://localhost:3000/api#/connections/ConnectionController_getAllConnections) method. The response will be an array of a single element, since we've just set up our agent:
 
 ```json
 [
@@ -191,7 +192,7 @@ To make VS Agent aware of our backend, we simply need to set `EVENTS_BASE_URL` e
 ```
 docker run -p 3001:3001 -p 3000:3000 \
   -e EVENTS_BASE_URL=http://our-local-ip:4001 \
-  -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
+  -e AGENT_PUBLIC_DID=did:webvh:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
   --name vs-agent io2060/vs-agent:dev
