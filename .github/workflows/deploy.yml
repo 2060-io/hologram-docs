@@ -32,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'  # Use the Node.js version compatible with your Docusaurus build
+          node-version: '20'  # LTS; aligned with Docusaurus 3 tested matrix
 
       - name: Install dependencies
         run: npm ci

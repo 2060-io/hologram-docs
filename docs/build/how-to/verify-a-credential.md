@@ -1,16 +1,19 @@
 # Verifying Verifiable Credentials
 
-We know how to issue credentials, but how can we do to ask users for any credential, being it issued by us or another entity we trust?
+:::note Advanced — bare VS Agent
+This how-to uses the **VS Agent primitives** directly. The normal path for verification is the Agent Pack's [`flows.authentication`](../agent-pack/overview.md) block, which wires credential presentation into the chat UI automatically. Come back here when you need direct access to the `/v1/invitation/presentation-request` endpoint.
+:::
 
-In this tutorial we'll show a simple example building our Verifier VS from scratch, but also introduce a powerful and
+We know how to issue credentials — but how do we ask users for any credential, whether issued by us or by another entity we trust?
 
+In this tutorial we'll show a simple example building our Verifier VS from scratch using the raw VS Agent presentation-request API.
 
 ### Requisites
 
 To complete this tutorial, you will need any Linux/MacOS-based computer with:
 
 - Docker
-- NodeJS 18 or newer
+- Node.js 20 or newer
 
 ### VS Agent set-up
 
@@ -73,7 +76,7 @@ Again, you can take shortUrl to use for QR code scanning in Hologram App.
 
 In the request, you'll note that we are specifying a **callback URL**: this is the endpoint where VS Agent will post updates about the flow (e.g. user scanned the code, user accepted the presentation, etc.). **ref** is an arbitrary string that we might use to identify the flow in case we use the same endpoint to get updates for all presentation flows.
 
-So let's update our `message-logger.ts` (the one from [Minimal VS tutorial](./10-minimal-vs.md#receiving-text-messages)) by adding a `presentations` endpoint:
+So let's update our `message-logger.ts` (the one from [Minimal VS tutorial](../advanced/bare-vs-agent.md#receiving-text-messages)) by adding a `presentations` endpoint:
 
 ```ts
 import express from 'express'

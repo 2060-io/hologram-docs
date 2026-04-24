@@ -1,19 +1,23 @@
 # Issuing Verifiable Credentials
 
-Now you know the basics of VS Agent set up and usage, it's time to learn about issuing Verifiable Credentials.
+:::note Advanced — bare VS Agent
+This how-to uses the **VS Agent primitives** directly. If you just want to ship an agent that issues credentials, the [**Quickstart**](../quickstart.md) and the [Agent Pack reference](../agent-pack/overview.md) cover the normal path. Come back here when you need direct access to the `/v1/credential-types` and `/v1/invitation/credential-offer` endpoints.
+:::
 
-In this tutorial we'll explore the basics about Verifiable Credential definition and issuance.
+Now that you know the basics of VS Agent setup and usage, it's time to learn about issuing Verifiable Credentials.
+
+In this tutorial we'll explore the basics of Verifiable Credential definition and issuance.
 
 ### Requisites
 
 To complete this tutorial, you will need any Linux/MacOS-based computer with:
 
 - Docker
-- NodeJS 18 or newer
+- Node.js 20 or newer
 
 ### VS Agent set-up
 
-To issue credentials, VS Agent setup is exactly the same as the previously seen [Minimal VS](./10-minimal-vs.md#making-your-vs-accessible). 
+To issue credentials, VS Agent setup is exactly the same as the previously seen [Minimal VS](../advanced/bare-vs-agent.md#making-our-vs-accessible).
 
 Let's run our issuer VS Agent:
 

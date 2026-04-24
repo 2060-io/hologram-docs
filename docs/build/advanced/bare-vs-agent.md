@@ -1,13 +1,19 @@
 # A minimal Verifiable Service
 
-In this tutorial we will learn how to create our very first own Verifiable Service using [VS Agent](https://github.com/2060-io/vs-agent) that is able to interact with users using [Hologram App](https://hologram.zone), capable of receiving text messages and transform it to [**Yoda-speak**](https://en.wikipedia.org/wiki/Yoda). Maybe not so useful, but fun to learn the basics of VS Agent configuration and API!
+:::note Advanced — bare VS Agent
+Most agents should start with the [**Quickstart**](../quickstart.md) using [`hologram-ai-agent-example`](https://github.com/2060-io/hologram-ai-agent-example) — you get a full Agent Pack, Helm chart, and deploy workflow out of the box.
+
+This page documents the underlying **VS Agent primitives** (bare container, no Agent Pack). Useful when you need full control of the DIDComm layer or want to embed VS Agent in a non-NestJS host.
+:::
+
+In this tutorial we will learn how to create our very first own Verifiable Service using [VS Agent](https://github.com/2060-io/vs-agent) that is able to interact with users using [Hologram App](https://hologram.zone), capable of receiving text messages and transform it to [**Yoda-speak**](https://en.wikipedia.org/wiki/Yoda). Maybe not so useful, but fun to learn the basics of VS Agent configuration and API.
 
 ### Requisites
 
 To complete this tutorial, we will need any Linux/MacOS-based computer with:
 
 - Docker
-- NodeJS 18 or newer
+- Node.js 20 or newer
 
 ### Get VS Agent
 
