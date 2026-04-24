@@ -1,4 +1,7 @@
-# .github/workflows/deploy.yml
+# .github/workflows/build.yml
+#
+# PR + branch build gate. The Docusaurus build is configured with
+# `onBrokenLinks: 'throw'`, so this job fails on any broken internal link.
 
 name: Build Docusaurus
 
@@ -7,26 +10,28 @@ on:
     branches:
       - feat/*
       - fix/*
+  pull_request:
+    branches:
+      - main
 
   workflow_dispatch:
 
 permissions:
-      contents: read
-      pages: write
-      id-token: write
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'  # Use the Node.js version compatible with your Docusaurus build
+          node-version: '20'  # LTS; aligned with Docusaurus 3 tested matrix
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci

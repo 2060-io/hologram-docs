@@ -6,8 +6,8 @@ import { remarkKroki } from 'remark-kroki';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Hologram SDK',
-  tagline: 'Open source solution for building chat-based verifiable services and verifiable AI agents, backed by decentralized identity, verifiable credentials and DIDComm.',
+  title: 'Hologram Docs',
+  tagline: 'Build verifiable AI agents and verifiable services on DIDComm, Verifiable Credentials, and the Verana trust layer.',
   favicon: 'img/favicon.ico',
 
   stylesheets: [
@@ -45,17 +45,13 @@ const config: Config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.ts'),
-          editUrl: undefined,
+          editUrl: 'https://github.com/2060-io/hologram-docs/edit/main/',
           showLastUpdateAuthor: false,
           showLastUpdateTime: false,
-          includeCurrentVersion: true, // Ensure the latest docs are included
-          versions: {
-            current: {
-              label: 'Next', // The default latest version
-              path: 'next',
-              banner: 'none',
-            },
-          },
+          // Single-version docs served at /docs/... (no /next/ prefix).
+          // If we ever cut stable versions, flip `includeCurrentVersion: true`
+          // and remove the `versions.current.path` override below.
+          includeCurrentVersion: true,
           remarkPlugins: [
             [
               remarkKroki,
@@ -116,10 +112,6 @@ const config: Config = {
       },
       items: [
         {
-          type: 'docsVersionDropdown', // This enables the version dropdown
-          position: 'right',
-        },
-        {
           type: 'docSidebar',
           sidebarId: 'learnSidebar',
           position: 'left',
@@ -131,8 +123,18 @@ const config: Config = {
           position: 'left',
           label: 'Build',
         },
-       
-        
+        {
+          type: 'docSidebar',
+          sidebarId: 'runSidebar',
+          position: 'left',
+          label: 'Run',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'referenceSidebar',
+          position: 'left',
+          label: 'Reference',
+        },
         {
           href: 'https://github.com/2060-io',
           label: 'GitHub',
