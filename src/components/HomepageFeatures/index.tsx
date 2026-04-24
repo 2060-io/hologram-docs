@@ -11,29 +11,36 @@ type FeatureItem = {
 };
 
 const FeatureList: FeatureItem[] = [
-  
   {
     title: 'Learn',
     Svg: require('@site/static/img/learn.svg').default,
-    to: '/docs/next/learn/introduction',
+    to: '/docs/learn/introduction',
     description: (
       <>
-        Learn how to build verifiable, decentralized AI services with secure messaging, biometrics, NFC ID reading, credential flows, ethical monetization, and DID-based discoverability.
+        The Hologram mental model — verifiable AI agents, VUAs, the Verana trust registry, and how the four pillars (Own / Verify / Discover / Govern) fit together.
       </>
     ),
-    
   },
   {
     title: 'Build',
     Svg: require('@site/static/img/use.svg').default,
-    to: '/docs/next/build/intro',
+    to: '/docs/build/quickstart',
     description: (
       <>
-        Learn how to build verifiable, decentralized AI services with secure messaging, biometrics, NFC ID reading, credential flows, ethical monetization, and DID-based discoverability.
-        </>
+        Fork the starter agent, set an OpenAI key, and chat with your own verifiable AI agent in 10 minutes. Then go deep on the Agent Pack, MCP, RBAC, and approvals.
+      </>
     ),
   },
-  
+  {
+    title: 'Run',
+    Svg: require('@site/static/img/use.svg').default,
+    to: '/docs/run/local',
+    description: (
+      <>
+        Deploy your agent locally with Docker Compose, or to Kubernetes via the Helm chart used by every agent on <code>demos.hologram.zone</code>.
+      </>
+    ),
+  },
 ];
 
 function Feature({title, to, Svg, description}: FeatureItem) {

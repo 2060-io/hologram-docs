@@ -265,3 +265,9 @@ BVS1 <--> CVS1 : p2p
 :::tip
 Verifiable services can be hosted anywhere, based on service provider (organization, person) decision.
 :::
+
+## In practice
+
+You don't wire any of this by hand. In practice, every piece on this diagram — the service DID, the credentials it presents, the trust resolver it uses, the schemas it accepts, the access control it enforces — is **declared in a single `agent-pack.yaml` manifest**, loaded at startup by the generic AI agent container.
+
+Head over to the [Quickstart](../build/quickstart.md) to fork a working example, or read the [Agent Pack overview](../build/agent-pack/overview.md) for the declarative surface area.
