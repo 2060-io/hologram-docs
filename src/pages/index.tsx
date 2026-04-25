@@ -5,11 +5,12 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
 /* -------------------------------------------------------------------------- *
- *  Homepage — design language locked to hologram.zone.
+ *  Homepage — classic documentation-site layout.
  *
  *  Sections (top → bottom):
- *    1. Hero          — pill + gradient headline + dual CTA, on a
- *                       bg-grid + hero-glow backdrop.
+ *    1. Hero          — product-name headline ("Hologram Developer
+ *                       Documentation") + descriptive subtitle + two CTAs,
+ *                       on a bg-grid + hero-glow backdrop.
  *    2. Three pillars — Learn / Build / Run, as cards.
  *    3. Quickstart    — fork-and-go callout with a code-window mock
  *                       of agent-pack.yaml.
