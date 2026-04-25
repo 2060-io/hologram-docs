@@ -143,7 +143,7 @@
   width: 2.75rem;
   height: 2.75rem;
   border-radius: 0.75rem;
-  background: rgba(139, 92, 246, 0.12);
+  background: rgba(99, 102, 241, 0.12);
   color: var(--hologram-brand-600);
   display: inline-flex;
   align-items: center;
@@ -151,7 +151,7 @@
   margin-bottom: 1.25rem;
 }
 :global([data-theme='dark']) .pillarIcon {
-  background: rgba(167, 139, 250, 0.18);
+  background: rgba(129, 140, 248, 0.18);
   color: var(--hologram-brand-300);
 }
 .pillarIcon svg {
@@ -282,7 +282,7 @@
 }
 
 .codeComment { color: rgb(113, 113, 122); }
-.codeKey     { color: #c4b5fd; }
+.codeKey     { color: #a5b4fc; }
 .codeStr     { color: #93c5fd; }
 .codeKw      { color: #f0abfc; }
 

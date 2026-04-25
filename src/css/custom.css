@@ -1,34 +1,43 @@
 /**
  * Hologram Docs — design system aligned with hologram.zone.
  *
- * Brand palette + gradient utilities + translucent cards mirror the
- * website's @theme tokens (see hologram.zone-website/src/app/globals.css).
- * Infima variables are remapped to the brand-purple scale.
+ * Brand palette sampled directly from the Hologram logo
+ * (static/img/hologram.zone.png) — the logo's outer field is #7678ec,
+ * which places the brand squarely in Tailwind's indigo scale, not
+ * violet. Infima color variables are remapped accordingly.
+ *
+ * Gradient + card utilities mirror the patterns used on the marketing
+ * site (see hologram.zone-website/src/app/globals.css).
  */
 
 /* =========================================================================
    Design tokens
    ========================================================================= */
 :root {
-  /* brand (purple) — locked to hologram.zone @theme tokens */
-  --hologram-brand-50:  #f5f3ff;
-  --hologram-brand-100: #ede9fe;
-  --hologram-brand-200: #ddd6fe;
-  --hologram-brand-300: #c4b5fd;
-  --hologram-brand-400: #a78bfa;
-  --hologram-brand-500: #8b5cf6;
-  --hologram-brand-600: #7c3aed;
-  --hologram-brand-700: #6d28d9;
-  --hologram-brand-800: #5b21b6;
-  --hologram-brand-900: #4c1d95;
+  /* brand (indigo) — sampled from the Hologram logo.
+     The logo's outer field is #7678ec, which places the brand in the
+     Tailwind indigo scale (not violet). Sampled directly from
+     static/img/hologram.zone.png: bg-field=#7678ec, cube-face=#5c70b8,
+     deep=#342d86. */
+  --hologram-brand-50:  #eef2ff;
+  --hologram-brand-100: #e0e7ff;
+  --hologram-brand-200: #c7d2fe;
+  --hologram-brand-300: #a5b4fc;
+  --hologram-brand-400: #818cf8;
+  --hologram-brand-500: #6366f1;
+  --hologram-brand-600: #4f46e5;
+  --hologram-brand-700: #4338ca;
+  --hologram-brand-800: #3730a3;
+  --hologram-brand-900: #312e81;
 
   /* trust-indicator semantics */
   --hologram-trust-verified: #22c55e;
   --hologram-trust-caution:  #f59e0b;
   --hologram-trust-rejected: #ef4444;
 
-  /* gradient-text accent stops */
-  --hologram-grad-1: #c4b5fd;
+  /* gradient-text accent stops — indigo-300 → blue-400 → cyan-400,
+     echoes the logo's purple-field → cyan-glow transition. */
+  --hologram-grad-1: #a5b4fc;
   --hologram-grad-2: #60a5fa;
   --hologram-grad-3: #22d3ee;
 
@@ -65,7 +74,7 @@
   --ifm-code-padding-vertical: 0.15rem;
   --ifm-code-border-radius: 6px;
 
-  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.10);
+  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.10);
 }
 
 /* Dark mode */
@@ -90,7 +99,7 @@
 
   --ifm-code-background: rgba(255, 255, 255, 0.06);
 
-  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.20);
+  --docusaurus-highlighted-code-line-bg: rgba(99, 102, 241, 0.20);
 }
 
 /* =========================================================================
@@ -173,7 +182,7 @@ a {
 
 article a:not(.card-link) {
   text-decoration: underline;
-  text-decoration-color: rgba(139, 92, 246, 0.35);
+  text-decoration-color: rgba(99, 102, 241, 0.35);
   text-decoration-style: solid;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
@@ -197,11 +206,11 @@ article a:not(.card-link):hover {
   background-color: var(--hologram-brand-600);
   border: none;
   color: #fff;
-  box-shadow: 0 8px 24px -8px rgba(124, 58, 237, 0.5);
+  box-shadow: 0 8px 24px -8px rgba(79, 70, 229, 0.5);
 }
 .button.button--primary:hover {
   background-color: var(--hologram-brand-500);
-  box-shadow: 0 12px 28px -10px rgba(124, 58, 237, 0.6);
+  box-shadow: 0 12px 28px -10px rgba(79, 70, 229, 0.6);
   transform: translateY(-1px);
 }
 
@@ -270,7 +279,7 @@ article a:not(.card-link):hover {
   inset: -10% -10% auto -10%;
   height: 80%;
   background: radial-gradient(ellipse at 50% 30%,
-              rgba(139, 92, 246, 0.18) 0%,
+              rgba(99, 102, 241, 0.18) 0%,
               rgba(59, 130, 246, 0.10) 35%,
               transparent 70%);
   pointer-events: none;
@@ -278,8 +287,8 @@ article a:not(.card-link):hover {
 }
 [data-theme='dark'] .hero-glow::before {
   background: radial-gradient(ellipse at 50% 30%,
-              rgba(139, 92, 246, 0.28) 0%,
-              rgba(59, 130, 246, 0.14) 35%,
+              rgba(99, 102, 241, 0.32) 0%,
+              rgba(59, 130, 246, 0.16) 35%,
               transparent 70%);
 }
 
@@ -317,10 +326,10 @@ article a:not(.card-link):hover {
 .card-surface:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 32px -16px rgba(17, 24, 39, 0.18), 0 1px 2px rgba(17, 24, 39, 0.05);
-  border-color: rgba(139, 92, 246, 0.30);
+  border-color: rgba(99, 102, 241, 0.30);
 }
 [data-theme='dark'] .card-surface:hover {
-  border-color: rgba(167, 139, 250, 0.35);
+  border-color: rgba(129, 140, 248, 0.35);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.025) 100%);
 }
 
@@ -376,13 +385,13 @@ article a:not(.card-link):hover {
 }
 .menu__link--active,
 .menu__link--active:hover {
-  background: rgba(139, 92, 246, 0.10);
+  background: rgba(99, 102, 241, 0.10);
   color: var(--hologram-brand-700);
   font-weight: 600;
 }
 [data-theme='dark'] .menu__link--active,
 [data-theme='dark'] .menu__link--active:hover {
-  background: rgba(167, 139, 250, 0.14);
+  background: rgba(129, 140, 248, 0.14);
   color: var(--hologram-brand-200);
 }
 
@@ -436,10 +445,10 @@ article a:not(.card-link):hover {
   border-color: rgba(255, 255, 255, 0.08);
 }
 .markdown table thead tr {
-  background: rgba(139, 92, 246, 0.06);
+  background: rgba(99, 102, 241, 0.06);
 }
 [data-theme='dark'] .markdown table thead tr {
-  background: rgba(139, 92, 246, 0.10);
+  background: rgba(99, 102, 241, 0.10);
 }
 .markdown table th,
 .markdown table td {
