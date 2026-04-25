@@ -183,15 +183,15 @@
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--hologram-brand-600);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
 }
 :global([data-theme='dark']) .pillarLink {
   color: var(--hologram-brand-300);
 }
 .pillarCard:hover .pillarLink {
-  gap: 0.625rem;
+  color: var(--hologram-brand-700);
+}
+:global([data-theme='dark']) .pillarCard:hover .pillarLink {
+  color: var(--hologram-brand-200);
 }
 
 /* ============================== QUICKSTART CARD ============================== */

@@ -79,23 +79,6 @@ function IconShip({className}: IconProps) {
   );
 }
 
-function IconArrow({className}: IconProps) {
-  return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true">
-      <line x1="5" y1="12" x2="19" y2="12" />
-      <polyline points="12 5 19 12 12 19" />
-    </svg>
-  );
-}
-
 const PILLARS = [
   {
     title: 'Learn',
@@ -189,9 +172,7 @@ function PillarCard({pillar}: {pillar: (typeof PILLARS)[number]}) {
       </span>
       <h3 className={styles.pillarTitle}>{pillar.title}</h3>
       <p className={styles.pillarText}>{pillar.description}</p>
-      <span className={styles.pillarLink}>
-        {pillar.cta} <IconArrow />
-      </span>
+      <span className={styles.pillarLink}>{pillar.cta}</span>
     </Link>
   );
 }
@@ -337,7 +318,7 @@ function Quickstart() {
             <Link
               to="/docs/build/quickstart"
               className={`button button--primary ${styles.quickstartCta}`}>
-              Open the quickstart <IconArrow />
+              Open the quickstart
             </Link>
           </div>
           <CodeWindow />
