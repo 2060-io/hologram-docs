@@ -172,4 +172,4 @@ For now, plan around the simpler model.
 
 - [**Admin API**](./admin-api.md) — the request/response side.
 - [**Bare VS Agent tutorial**](../build/advanced/bare-vs-agent.md) — wire up your own controller.
-- Source of truth: [`vs-agent-api.md` § Events](https://github.com/2060-io/vs-agent/blob/main/doc/vs-agent-api.md#events).
+- Source of truth: [`vs-agent-api.md` § Events](https://github.com/verana-labs/vs-agent/blob/main/doc/vs-agent-api.md#events).

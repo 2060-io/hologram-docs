@@ -1,70 +1,14 @@
-# Hologram Verifiable Services
+# The trust model
 
-An **Hologram Service** is a decentralized, usually container-based service, that can be independently deployed in any datacenter, and that implements the [Verifiable Trust specification](https://verana-labs.github.io/verifiable-trust-spec/).
+Hologram is built on the [Verifiable Trust specification](https://verana-labs.github.io/verifiable-trust-spec/) — three peer types ([introduced here](./introduction.md#three-kinds-of-peers)) interacting through a public registry. This page is the deeper picture: how a VS, a VUA, and the VPR compose into a working decentralised trust mesh.
 
-An HVS is uniquely identified by a [DID](https://www.w3.org/TR/did-1.0/), and it can authenticate itself to a peer by presenting verifiable credentials before any connection is initiated.
+Every peer is identified by a [DID](https://www.w3.org/TR/did-1.0/) and authenticates by presenting verifiable credentials *before* the connection completes. Both sides of every connection check each other; non-verifiable peers are rejected.
 
-```plantuml
-@startuml
+If a peer wants to **issue** credentials or **request** credential presentation, it must first prove (via the registry) that it is authorised to perform that action. Otherwise the counterparty refuses the request.
 
-object "Hologram Verifiable Service" as vsa #3fbdb6 {
-    *Public DID
-    *Linked-VP credentials
-    *VC wallet
-    *Keys
-    +Crypto wallet
-    +Connections
-}
-```
+## Verifiable User Agent (VUA)
 
-Peers wishing to connect to a VS can **review the verifiable credentials presented by the service**, verify their legitimacy through trust resolution, and **decide whether to proceed with the connection based on the outcome**.
-
-A VS is also required to verify the trustworthiness of peers attempting to connect to it, whether those peers are other verifiable services (VS) or verifiable user agents (VUAs), and must reject connections from non-verifiable peers.
-
-Furthermore, if a verifiable service wants to issue credentials or request credential presentation, **it must first prove that it is authorized to perform these actions**. Otherwise, the peer must refuse the request.
-
-```plantuml
-@startuml
-
-[Verifiable Public Registry (VPR)] as VPR #D88AB3
-
-
-package "Verifiable Service #1 (VS1)" as VS1  {
-  [Service Agent] as VS1sa #3fbdb6
-    [Trust Resolver] as VS1tr
-    [Indexer] as VS1idx
-    VS1sa --> VS1tr
-    VS1sa --> VS1idx
-}
-
-interface VS3 #3fbdb6
-interface VS4 #3fbdb6
-
-
-VS1tr --> VPR
-VS1tr --> VS3
-VS1tr --> VS4
-
-VS1idx --> VPR
-
-
-@enduml
-
-```
-
-:::tip
-All the verifications are performed by the VS by using the trust resolver. Indexer is used for service discovery.
-:::
-
-Examples of verifiable services include:
-
-- chatbot services, such as services built for [Hologram Messaging](https://hologram.zone)
-- decentralized social channels;
-- etc...
-
-## Hologram Verifiable User Agent (VUA)
-
-A verifiable user agent (VUA) is software, such as a browser, app, or wallet, designed to connect with verifiable services (VS) and other VUAs. When establishing connections, a VUA must verify the identity and trustworthiness of its peers and allow connections only to compliant VS or VUA peers.
+A verifiable user agent (VUA) is software — a browser, app, or wallet — designed to connect to verifiable services (VS) and other VUAs. When establishing connections, a VUA must verify the identity and trustworthiness of its peers and allow connections only to compliant peers.
 
 ```plantuml
 @startuml

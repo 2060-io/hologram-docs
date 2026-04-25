@@ -420,6 +420,29 @@ article a:not(.card-link):hover {
 }
 
 /* =========================================================================
+   Diagrams — kroki/PlantUML emit data-URI SVG <img> tags with light
+   backgrounds and dark strokes. They're readable in light mode but
+   blend into the dark-mode page background. In dark mode we give
+   them a light card surface so the diagram stays legible.
+   Centered + max-width keeps wide diagrams from blowing past the
+   article column.
+   ========================================================================= */
+.markdown img[src^="data:image/svg+xml"],
+.markdown img[src*="kroki.io"] {
+  display: block;
+  max-width: 100%;
+  margin-inline: auto;
+}
+[data-theme='dark'] .markdown img[src^="data:image/svg+xml"],
+[data-theme='dark'] .markdown img[src*="kroki.io"] {
+  background: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================================
    Admonitions — softer, branded
    ========================================================================= */
 .theme-admonition {
