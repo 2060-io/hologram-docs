@@ -3,7 +3,7 @@
 Canonical index of every environment variable the Hologram generic AI agent container recognises. Anything declared in the agent pack can also be driven from an env variable — useful for deployment-time overrides that shouldn't live in source-controlled YAML.
 
 :::tip
-These are the variables consumed by **the chatbot process**. The VS Agent is a separate container with its own variables (`AGENT_PUBLIC_DID`, `AGENT_LABEL`, `AGENT_INVITATION_IMAGE_URL`, `USE_CORS`, `EVENTS_BASE_URL`, wallet keys, …). See the [VS Agent README upstream](https://github.com/2060-io/vs-agent) for those.
+These are the variables consumed by **the chatbot process**. The VS Agent is a separate container with its own variables (`AGENT_PUBLIC_DID`, `AGENT_LABEL`, `AGENT_INVITATION_IMAGE_URL`, `USE_CORS`, `EVENTS_BASE_URL`, wallet keys, …). See the [VS Agent README upstream](https://github.com/verana-labs/vs-agent) for those.
 :::
 
 ## Application

@@ -2,7 +2,7 @@
 
 The **VS Agent admin API** is the HTTP/REST surface that a controller (your chatbot, your backend, your script) uses to talk to a VS Agent. Send messages, query connections, manage credential types — all the agent-control verbs.
 
-This page summarises the most-used endpoints and message types. The **canonical reference** is [`vs-agent/doc/vs-agent-api.md`](https://github.com/2060-io/vs-agent/blob/main/doc/vs-agent-api.md) — refer to it for exhaustive payload schemas.
+This page summarises the most-used endpoints and message types. The **canonical reference** is [`vs-agent/doc/vs-agent-api.md`](https://github.com/verana-labs/vs-agent/blob/main/doc/vs-agent-api.md) — refer to it for exhaustive payload schemas.
 
 ## Where it lives
 
@@ -155,7 +155,7 @@ Every message sent through `/v1/message` has a `type` field. The most common:
 | `mrz-data-request`, `mrz-data-submit` | both | MRZ (passport machine-readable zone) flow. |
 | `emrtd-data-request`, `emrtd-data-submit` | both | ePassport flow. |
 
-For exhaustive payload shapes see [the upstream spec](https://github.com/2060-io/vs-agent/blob/main/doc/vs-agent-api.md#message-types).
+For exhaustive payload shapes see [the upstream spec](https://github.com/verana-labs/vs-agent/blob/main/doc/vs-agent-api.md#message-types).
 
 ## Receiving messages
 
@@ -169,8 +169,8 @@ You don't usually call this API by hand. Two officially-supported clients:
 
 | Package | Language | When to use |
 |---|---|---|
-| [`@2060.io/vs-agent-client`](https://github.com/2060-io/vs-agent/tree/main/packages/client) | TypeScript / Node | Plain Node controllers, scripts, tests |
-| [`@2060.io/vs-agent-nestjs-client`](https://github.com/2060-io/vs-agent/tree/main/packages/nestjs-client) | NestJS | NestJS controllers (the chatbot uses this) |
+| [`@2060.io/vs-agent-client`](https://github.com/verana-labs/vs-agent/tree/main/packages/client) | TypeScript / Node | Plain Node controllers, scripts, tests |
+| [`@2060.io/vs-agent-nestjs-client`](https://github.com/verana-labs/vs-agent/tree/main/packages/nestjs-client) | NestJS | NestJS controllers (the chatbot uses this) |
 
 If you fork the chatbot you'll already have everything wired up. If you build a custom controller, start with `@2060.io/vs-agent-client`.
 
@@ -238,4 +238,4 @@ curl -X POST http://localhost:3000/v1/message \
 
 - [**Webhook events**](./webhook-events.md) — the receive path.
 - [**Bare VS Agent tutorial**](../build/advanced/bare-vs-agent.md) — using the API directly without the chatbot.
-- Source of truth: [`vs-agent/doc/vs-agent-api.md`](https://github.com/2060-io/vs-agent/blob/main/doc/vs-agent-api.md).
+- Source of truth: [`vs-agent/doc/vs-agent-api.md`](https://github.com/verana-labs/vs-agent/blob/main/doc/vs-agent-api.md).

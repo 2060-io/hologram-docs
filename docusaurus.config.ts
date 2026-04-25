@@ -11,9 +11,21 @@ const config: Config = {
   favicon: 'img/favicon.ico',
 
   stylesheets: [
+    // Inter (body) + Space Grotesk (display). Mirrors the typography
+    // used on hologram.zone — see hologram.zone-website/src/app/layout.tsx
+    // which loads the same families via next/font.
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap',
+  ],
+  headTags: [
+    // Preconnect to Google Fonts so the @font-face fetch from the
+    // stylesheet above does not block first paint.
     {
-      href: '/css/euclid-circular-a.css',
-      type: 'text/css',
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.googleapis.com'},
+    },
+    {
+      tagName: 'link',
+      attributes: {rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous'},
     },
   ],
   // Set the production url of your site here

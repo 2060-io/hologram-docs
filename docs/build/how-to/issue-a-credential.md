@@ -27,7 +27,7 @@ docker run -p 3001:3001 -p 3000:3000 \
   -e EVENTS_BASE_URL=http://your-local-ip:4001 \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
-  --name vs-agent io2060/vs-agent:dev
+  --name vs-agent verana-labs/vs-agent:dev
 
 ```
 

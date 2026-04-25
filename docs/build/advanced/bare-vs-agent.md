@@ -6,7 +6,7 @@ Most agents should start with the [**Quickstart**](../quickstart.md) using [`hol
 This page documents the underlying **VS Agent primitives** (bare container, no Agent Pack). Useful when you need full control of the DIDComm layer or want to embed VS Agent in a non-NestJS host.
 :::
 
-In this tutorial we will learn how to create our very first own Verifiable Service using [VS Agent](https://github.com/2060-io/vs-agent) that is able to interact with users using [Hologram App](https://hologram.zone), capable of receiving text messages and transform it to [**Yoda-speak**](https://en.wikipedia.org/wiki/Yoda). Maybe not so useful, but fun to learn the basics of VS Agent configuration and API.
+In this tutorial we will learn how to create our very first own Verifiable Service using [VS Agent](https://github.com/verana-labs/vs-agent) that is able to interact with users using [Hologram App](https://hologram.zone), capable of receiving text messages and transform it to [**Yoda-speak**](https://en.wikipedia.org/wiki/Yoda). Maybe not so useful, but fun to learn the basics of VS Agent configuration and API.
 
 ### Requisites
 
@@ -20,7 +20,7 @@ To complete this tutorial, we will need any Linux/MacOS-based computer with:
 We can run it locally or by using Docker, pulling the image from DockerHub:
 
 ```
-docker pull io2060/vs-agent:dev
+docker pull verana-labs/vs-agent:dev
 ```
 
 Running VS Agent is easy, but we will first need to understand how to set it up in order to make it usable.
@@ -52,7 +52,7 @@ This is enough for we to get a basic VS Agent app and running. So let's run it:
 ```bash
 docker run -p 3001:3001 -p 3000:3000 \
   -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
-  --name vs-agent io2060/vs-agent:dev
+  --name vs-agent verana-labs/vs-agent:dev
 ```
 
 Note that we are exposing both ports 3000 and 3001, the default ports for VS Agent's admin and public API respectively.
@@ -81,7 +81,7 @@ docker run -p 3001:3001 -p 3000:3000 \
   -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \
-  --name io2060/vs-agent:dev
+  --name verana-labs/vs-agent:dev
 
 ```
 
@@ -98,7 +98,7 @@ Much better now! And if we scan it with Hologram, we'll now see the invitation w
 
 Allright: our user is connected to our VS through an end-to-end encrypted DIDComm connection. How can we interact with them? This is something we'll dive deeper in following tutorials, but let's see how we can easily identify them and send a text message, which is the simplest form of message we can send to Hologram.
 
-For this purpose we will need to use two methods from [VS Agent Admin API](https://github.com/2060-io/vs-agent/blob/main/doc/vs-agent-api.md). To facilitate our work, we can open a web browser in http://localhost:3000/api, which will show us a convenient Swagger interface.
+For this purpose we will need to use two methods from [VS Agent Admin API](https://github.com/verana-labs/vs-agent/blob/main/doc/vs-agent-api.md). To facilitate our work, we can open a web browser in http://localhost:3000/api, which will show us a convenient Swagger interface.
 
 #### Identifying user's connection id
 
@@ -200,7 +200,7 @@ docker run -p 3001:3001 -p 3000:3000 \
   -e AGENT_PUBLIC_DID=did:web:myhost.ngrok-free.app \
   -e AGENT_LABEL="My First Hologram VS" \
   -e AGENT_INVITATION_IMAGE_URL=https://hologram.zone/images/ico-hologram.png \  
-  --name vs-agent io2060/vs-agent:dev
+  --name vs-agent verana-labs/vs-agent:dev
 ```
 
 #### Receive a message from Hologram

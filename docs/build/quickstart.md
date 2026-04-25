@@ -65,7 +65,7 @@ set +a
 
 This will:
 
-1. Pull `io2060/vs-agent:latest`.
+1. Pull `verana-labs/vs-agent:latest`.
 2. Start an ngrok tunnel on the VS Agent's public port and use it as the agent's public DID (`did:webvh:<your-ngrok-domain>`).
 3. Set up the `veranad` CLI account on Verana testnet.
 4. Request a **Service credential** from the demo organization, which legitimates your agent on the trust network.

@@ -37,7 +37,7 @@ chatbot --> redis : vector store, memory, queues
 
 Two processes, one conceptual agent:
 
-- **VS Agent** (`io2060/vs-agent`) — handles the DIDComm side. Speaks the protocol, owns the wallet and keys, resolves trust against the VPR, exposes an admin HTTP API at `:3000` and a public DIDComm endpoint at `:3001`. Stateless from the chatbot's point of view.
+- **VS Agent** (`verana-labs/vs-agent`) — handles the DIDComm side. Speaks the protocol, owns the wallet and keys, resolves trust against the VPR, exposes an admin HTTP API at `:3000` and a public DIDComm endpoint at `:3001`. Stateless from the chatbot's point of view.
 - **Chatbot** (`io2060/hologram-generic-ai-agent-app`) — the smart side. Receives message webhooks from the VS Agent, runs them through an LLM with tools, calls MCP servers, decides who to send messages back to, triggers credential flows through the VS Agent's admin API.
 
 Your users only see one agent. Your deployment typically runs these as two containers in a pod, plus Redis and PostgreSQL for state.

@@ -44,7 +44,7 @@ A specific kind of [agent](#agent-hologram-agent) registered as a discoverable, 
 
 ### VS Agent (Verifiable-Service Agent)
 
-The **DIDComm endpoint container** that holds the agent's wallet, public DID, and connections. Exposes a REST admin API (port 3000) for the controller and a public DIDComm port (3001) for peers. Published as `io2060/vs-agent`. Source: [`vs-agent`](https://github.com/2060-io/vs-agent).
+The **DIDComm endpoint container** that holds the agent's wallet, public DID, and connections. Exposes a REST admin API (port 3000) for the controller and a public DIDComm port (3001) for peers. Published as `verana-labs/vs-agent`. Source: [`vs-agent`](https://github.com/verana-labs/vs-agent).
 
 In docs: when we say "VS Agent" without "Hologram" we mean the container; when we say "agent" we usually mean "the whole thing" (VS Agent + chatbot + agent pack).
 

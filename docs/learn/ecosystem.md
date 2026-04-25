@@ -25,7 +25,7 @@ That's it. Everything below is context — useful background but not gating.
 | [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps) | The Organization + Avatar issuers that the example agent trusts. Deployed at `{organization,avatar}.demos.hologram.zone`. | You need your own trust-anchor / avatar issuer instead of leaning on the public demos. |
 | [`hologram-generic-ai-agent-vs`](https://github.com/2060-io/hologram-generic-ai-agent-vs) | The **engine**. The chatbot container that reads an agent pack, talks to a VS Agent, runs the LLM, dispatches MCP tools. Published as `io2060/hologram-generic-ai-agent`. | You want to understand internals, contribute, or fork the chatbot itself. |
 | [`hologram-verifiable-services`](https://github.com/2060-io/hologram-verifiable-services) | The reference deployments behind `vs.hologram.zone`. One folder per service, GHA workflow per service. | You want production-grade examples — RBAC, multi-tenant ingress, layered trust deps. |
-| [`vs-agent`](https://github.com/2060-io/vs-agent) | The DIDComm endpoint + wallet. Published as `io2060/vs-agent`. | You want to use the VS Agent primitives directly without the chatbot — see [Advanced — bare VS Agent](../build/advanced/bare-vs-agent.md). |
+| [`vs-agent`](https://github.com/verana-labs/vs-agent) | The DIDComm endpoint + wallet. Published as `verana-labs/vs-agent`. | You want to use the VS Agent primitives directly without the chatbot — see [Advanced — bare VS Agent](../build/advanced/bare-vs-agent.md). |
 
 ## What each demo demonstrates
 
