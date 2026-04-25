@@ -4,16 +4,16 @@ A Hologram agent in production is a Helm release. Two charts exist, and you pick
 
 | Chart | When to use |
 |---|---|
-| **`hologram-generic-ai-agent-chart`** | Full AI agent: chatbot + VS Agent + Redis + PostgreSQL. This is what the [quickstart](../../build/quickstart.md) uses. Ships as OCI at `oci://registry-1.docker.io/io2060/hologram-generic-ai-agent-chart`. |
-| **`vs-agent-chart`** | Pure VS Agent primitives — credential issuers, credential verifiers, DIDComm-only services. No chatbot, no LLM. Ships at `oci://registry-1.docker.io/veranalabs/vs-agent-chart`. Used by [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps) for the organization and avatar services. |
+| **`hologram-ai-agent-chart`** | Full AI agent: chatbot + VS Agent + Redis + PostgreSQL. This is what the [quickstart](../../build/quickstart.md) uses. Ships as OCI at `oci://registry-1.docker.io/io2060/hologram-ai-agent-chart`. |
+| **`vs-agent-chart`** | Pure VS Agent primitives — credential issuers, credential verifiers, DIDComm-only services. No chatbot, no LLM. Ships at `oci://registry-1.docker.io/veranalabs/vs-agent-chart`. Used by [`hologram-sandbox-deps`](https://github.com/2060-io/hologram-sandbox-deps) for the organization and avatar services. |
 
-This page focuses on `hologram-generic-ai-agent-chart`. For `vs-agent-chart`, the values structure is similar but narrower — see the [chart README upstream](https://github.com/2060-io/hologram-generic-ai-agent-vs/blob/main/charts/README.md).
+This page focuses on `hologram-ai-agent-chart`. For `vs-agent-chart`, the values structure is similar but narrower — see the [chart README upstream](https://github.com/2060-io/hologram-ai-agent/blob/main/charts/README.md).
 
 ## Shape of the deployment
 
 One release deploys:
 
-- **chatbot** — `StatefulSet`, `io2060/hologram-generic-ai-agent-app:latest`, ingress optional
+- **chatbot** — `StatefulSet`, `io2060/hologram-ai-agent:latest`, ingress optional
 - **vs-agent** — `Deployment`, `veranalabs/vs-agent:latest`, ingress **required** (public DIDComm endpoint)
 - **redis** — `StatefulSet`, `redis/redis-stack-server:latest`, ClusterIP
 - **postgres** — `StatefulSet`, `postgres:16-alpine`, ClusterIP, PVC-backed
@@ -21,11 +21,11 @@ One release deploys:
 A typical `deployment.yaml` for the quickstart agent, with annotations:
 
 ```yaml
-chartSource: oci://registry-1.docker.io/io2060/hologram-generic-ai-agent-chart
+chartSource: oci://registry-1.docker.io/io2060/hologram-ai-agent-chart
 chartVersion: v1.13.0
 
 global:
-  domain: demos.hologram.zone        # Used by all templated ingress hosts
+  domain: sandbox.hologram.zone        # Used by all templated ingress hosts
 
 nameOverride: example-agent-chart    # Release-unique prefix; see "Multi-tenant" below
 
@@ -36,7 +36,7 @@ chatbot:
   enabled: true
   replicaCount: 1
   image:
-    repository: io2060/hologram-generic-ai-agent-app
+    repository: io2060/hologram-ai-agent
     tag: latest
   port: 3003
   extraEnv:
@@ -92,7 +92,7 @@ postgres:
 
 ### `nameOverride` — multi-tenant agents per namespace
 
-Every template is prefixed with `{{ .Values.nameOverride | default .Release.Name }}`. Two releases in the same namespace with different `nameOverride` don't collide. That's how `demos.hologram.zone` hosts multiple agents:
+Every template is prefixed with `{{ .Values.nameOverride | default .Release.Name }}`. Two releases in the same namespace with different `nameOverride` don't collide. That's how `sandbox.hologram.zone` hosts multiple agents:
 
 ```text
 namespace hologram-demo
@@ -109,7 +109,7 @@ Set `nameOverride` to a unique value per release.
 
 ### `global.domain` + ingress hosts
 
-Every ingress host is templated as `<subdomain>.{{ .Values.global.domain }}`. For `demos.hologram.zone`, the VS Agent gets `example-agent.demos.hologram.zone`. You manage the wildcard TLS cert (or per-host cert) outside the release.
+Every ingress host is templated as `<subdomain>.{{ .Values.global.domain }}`. For `sandbox.hologram.zone`, the VS Agent gets `example-agent.sandbox.hologram.zone`. You manage the wildcard TLS cert (or per-host cert) outside the release.
 
 ### Secrets — what you **must** pass
 
@@ -138,7 +138,7 @@ kubectl create configmap example-agent-agent-pack \
 
 ## Typical deploy flow (GHA)
 
-From the [starter's deploy workflow](https://github.com/2060-io/hologram-ai-agent-example/blob/main/.github/workflows/deploy.yml):
+From the [starter's deploy workflow](https://github.com/2060-io/hologram-sandbox-agent-example/blob/main/.github/workflows/deploy.yml):
 
 1. **Create secrets** — Postgres password + any agent-specific secret.
 2. **Create the agent-pack ConfigMap** from `agent-pack.yaml`.
@@ -167,7 +167,7 @@ helm rollback $RELEASE_NAME -n $NAMESPACE
 
 - **Logs.** `kubectl logs -f statefulset/<release>-chatbot` and `kubectl logs -f deploy/<agent-name>` (the VS Agent).
 - **Credentials / DIDComm health.** `curl https://<agent-host>/.well-known/did.json` — must resolve to a valid DID document with Linked Verifiable Presentations.
-- **Statistics.** If you wire up the Hologram JMS/Artemis stats module, per-user connection/messages are emitted to your broker. See upstream [JMS integration](https://github.com/2060-io/hologram-generic-ai-agent-vs/blob/main/docs/hologram-generic-jms-integration.md).
+- **Statistics.** If you wire up the Hologram JMS/Artemis stats module, per-user connection/messages are emitted to your broker. See upstream [JMS integration](https://github.com/2060-io/hologram-ai-agent/blob/main/docs/hologram-generic-jms-integration.md).
 
 ## Next
 

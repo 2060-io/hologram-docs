@@ -23,16 +23,16 @@ The starter has **[Context7 MCP](https://context7.com)** plugged in — a public
 ## Step 1 — Fork the starter
 
 ```bash
-# Use the GitHub UI to fork https://github.com/2060-io/hologram-ai-agent-example
+# Use the GitHub UI to fork https://github.com/2060-io/hologram-sandbox-agent-example
 # or the gh CLI:
-gh repo fork 2060-io/hologram-ai-agent-example --clone --remote
-cd hologram-ai-agent-example
+gh repo fork 2060-io/hologram-sandbox-agent-example --clone --remote
+cd hologram-sandbox-agent-example
 ```
 
-The starter depends on two auxiliary Verifiable Services (an Organization + an Avatar Issuer). A pre-deployed demo instance already exists at `organization.demos.hologram.zone` and `avatar.demos.hologram.zone` — the starter is wired to use it by default, so you don't have to deploy anything else to get going.
+The starter depends on two auxiliary Verifiable Services (an Organization + an Avatar Issuer). A pre-deployed demo instance already exists at `organization.sandbox.hologram.zone` and `avatar.sandbox.hologram.zone` — the starter is wired to use it by default, so you don't have to deploy anything else to get going.
 
 :::tip
-If you want your own trust anchor instead of pointing at the shared demo, fork [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps) and deploy it (two GHA workflow clicks). Come back here afterwards with your own `ORG_VS_PUBLIC_URL` / `ORG_VS_ADMIN_URL`.
+If you want your own trust anchor instead of pointing at the shared demo, fork [`hologram-sandbox-deps`](https://github.com/2060-io/hologram-sandbox-deps) and deploy it (two GHA workflow clicks). Come back here afterwards with your own `ORG_VS_PUBLIC_URL` / `ORG_VS_ADMIN_URL`.
 :::
 
 ## Step 2 — Get an Avatar credential
@@ -40,7 +40,7 @@ If you want your own trust anchor instead of pointing at the shared demo, fork [
 Your agent will authenticate users against a **Hologram Demo Avatar** credential. Grab one for yourself first:
 
 1. Open Hologram Messaging on your phone.
-2. Visit `https://avatar.demos.hologram.zone/` in a browser and scan the QR.
+2. Visit `https://avatar.sandbox.hologram.zone/` in a browser and scan the QR.
 3. Pick a display name and accept the credential offer.
 
 Your phone now holds an AnonCreds Avatar credential — that's what the agent will ask for when you authenticate.
