@@ -111,9 +111,13 @@ Purpose of a VPR is to answer these questions:
 
 [VPRs are detailed here](https://docs.verana.io/docs/next/learn/verifiable-public-registry/trust-registries)
 
-### DID Directory
+### Discovery through indexers
 
-Added to trust registry features, the VPR provides a **DID directory**: a public database of [DIDs](https://www.w3.org/TR/did-1.0/). It allows crawlers and search engines to index metadata associated with **verifiable services (VSs)** provided by these DIDs.
+The VPR itself doesn't host a list of services — it hosts **permissions**: *which participants are authorised to issue, verify, or govern each credential schema, in each ecosystem*. This is the data that feeds real-time trust resolution (the "can this DID issue credential X?" lookup performed on every connection).
+
+For **discovery** — letting end users search or browse agents — the permission directory is designed to be **crawled by indexers**. An indexer walks the permissions on-chain, resolves each participant [DID](https://www.w3.org/TR/did-1.0/), inspects its [Linked Verifiable Presentations](https://identity.foundation/linked-vp/) to identify the verifiable services it operates, and publishes a searchable catalogue.
+
+This keeps the VPR small and keeps discovery competitive: anyone can run an indexer, expose an API, or build a search engine over the permission directory. The Hologram app surfaces agents through this indexed view; ecosystem governors can publish their own filtered views; third-party search engines can rank services by verifiable metadata instead of marketing spend.
 
 ## Build for decentralization
 
