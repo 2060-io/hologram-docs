@@ -28,7 +28,7 @@ A tool that ships with the chatbot itself rather than being supplied by an exter
 
 ### Chatbot (Hologram chatbot)
 
-The **engine container** that reads an Agent Pack, holds the conversation state for each connected user, dispatches LLM calls, runs MCP tool calls, applies RBAC, and forwards messages to/from a [VS Agent](#vs-agent-verifiable-service-agent). Published as `io2060/hologram-generic-ai-agent`. Source: [`hologram-generic-ai-agent-vs`](https://github.com/2060-io/hologram-generic-ai-agent-vs).
+The **engine container** that reads an Agent Pack, holds the conversation state for each connected user, dispatches LLM calls, runs MCP tool calls, applies RBAC, and forwards messages to/from a [VS Agent](#vs-agent-verifiable-service-agent). Published as `io2060/hologram-ai-agent`. Source: [`hologram-ai-agent`](https://github.com/2060-io/hologram-ai-agent).
 
 ### Controller
 
@@ -72,7 +72,7 @@ The **public artefact** an issuer publishes that defines the schema + revocation
 
 ### DID (Decentralised Identifier)
 
-A **W3C URI** that resolves to a DID document containing public keys, service endpoints, and (in the Hologram stack) Linked Verifiable Presentations. VS Agents use [`did:webvh`](https://identity.foundation/didwebvh/) (e.g. `did:webvh:my-agent.demos.hologram.zone`) — the verifiable-history DID method, which provides tamper-evident DID document history on top of HTTPS hosting.
+A **W3C URI** that resolves to a DID document containing public keys, service endpoints, and (in the Hologram stack) Linked Verifiable Presentations. VS Agents use [`did:webvh`](https://identity.foundation/didwebvh/) (e.g. `did:webvh:my-agent.sandbox.hologram.zone`) — the verifiable-history DID method, which provides tamper-evident DID document history on top of HTTPS hosting.
 
 ### DIDComm
 
@@ -188,7 +188,7 @@ The ECS credential a child agent receives from its parent organization, attached
 
 ### Trust anchor
 
-The **organization at the top of an agent's chain of trust**. Typically a `vs-agent`-only deployment with no chatbot. Public examples: `organization.vs.hologram.zone`, `organization.demos.hologram.zone`. See [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps).
+The **organization at the top of an agent's chain of trust**. Typically a `vs-agent`-only deployment with no chatbot. Public examples: `organization.vs.hologram.zone`, `organization.sandbox.hologram.zone`. See [`hologram-sandbox-deps`](https://github.com/2060-io/hologram-sandbox-deps).
 
 ### Webhook events
 

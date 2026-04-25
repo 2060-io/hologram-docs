@@ -4,7 +4,7 @@ The starter project. The shortest path from "I want to build a Hologram agent" t
 
 ## What it is
 
-[`hologram-ai-agent-example`](https://github.com/2060-io/hologram-ai-agent-example) is a fork-friendly template that:
+[`hologram-sandbox-agent-example`](https://github.com/2060-io/hologram-sandbox-agent-example) is a fork-friendly template that:
 
 - Ships a complete `agent-pack.yaml` with OpenAI, Context7 MCP, English, and Avatar-credential auth wired up.
 - Includes `scripts/setup.sh` (VS Agent + ngrok + Service credential) and `scripts/start.sh` (chatbot + Redis + Postgres via docker-compose).
@@ -45,7 +45,7 @@ It's the canonical "Hello World" for the platform, and the starter every other c
                                       └───────────────────┘
 ```
 
-The two right-side services are **shared dependencies** — they live in [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps). For a quick demo you point at the pre-deployed `*.demos.hologram.zone` instances; for production you fork the deps repo and run your own.
+The two right-side services are **shared dependencies** — they live in [`hologram-sandbox-deps`](https://github.com/2060-io/hologram-sandbox-deps). For a quick demo you point at the pre-deployed `*.sandbox.hologram.zone` instances; for production you fork the deps repo and run your own.
 
 ## The pack, annotated
 
@@ -110,7 +110,7 @@ flows:
 
 `required: false` means guests can chat — they just don't get the personalised greeting (`{userName}` is empty until they auth). `userIdentityAttribute: name` is the right choice when authenticating with the Avatar credential, where the unique attribute is the Hologram username.
 
-`CREDENTIAL_DEFINITION_ID` comes from the avatar VS Agent — set it in `config.env` to the value emitted by `hologram-ai-agent-example-deps`'s avatar deploy workflow. For the demo deps it's published in their workflow summary.
+`CREDENTIAL_DEFINITION_ID` comes from the avatar VS Agent — set it in `config.env` to the value emitted by `hologram-sandbox-deps`'s avatar deploy workflow. For the demo deps it's published in their workflow summary.
 
 ### Menu
 
@@ -168,8 +168,8 @@ Twelve turns of rolling history. Drop to `memory: { backend: memory }` for dev i
 ## Local run
 
 ```bash
-gh repo fork 2060-io/hologram-ai-agent-example --clone --remote
-cd hologram-ai-agent-example
+gh repo fork 2060-io/hologram-sandbox-agent-example --clone --remote
+cd hologram-sandbox-agent-example
 
 # Set the things that aren't in config.env
 export OPENAI_API_KEY=sk-proj-…
@@ -189,7 +189,7 @@ For ports, troubleshooting, and reset, see [**Run locally**](../../run/local.md)
 
 ## Production deploy
 
-The [`.github/workflows/deploy.yml`](https://github.com/2060-io/hologram-ai-agent-example/blob/main/.github/workflows/deploy.yml) does the full chain in one job — chart install, agent-pack ConfigMap, secrets, Service-credential issuance, Linked-VP wiring. Trigger via Actions tab → Run workflow → step: `all`.
+The [`.github/workflows/deploy.yml`](https://github.com/2060-io/hologram-sandbox-agent-example/blob/main/.github/workflows/deploy.yml) does the full chain in one job — chart install, agent-pack ConfigMap, secrets, Service-credential issuance, Linked-VP wiring. Trigger via Actions tab → Run workflow → step: `all`.
 
 For the chart anatomy, secrets policy, and multi-tenant patterns, see [**Run on Kubernetes**](../../run/kubernetes/helm-chart.md).
 

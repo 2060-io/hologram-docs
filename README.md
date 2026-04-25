@@ -35,9 +35,9 @@ Several reference pages mirror files from other 2060-io repos rather than re-der
 
 Key upstream repos:
 
-- [`2060-io/hologram-generic-ai-agent-vs`](https://github.com/2060-io/hologram-generic-ai-agent-vs) — the agent container + Helm chart (source of truth for the agent-pack schema, env vars, RBAC spec).
-- [`2060-io/hologram-ai-agent-example`](https://github.com/2060-io/hologram-ai-agent-example) — canonical forkable starter agent (source of truth for the quickstart).
-- [`2060-io/hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps) — its organization + avatar dependencies.
+- [`2060-io/hologram-ai-agent`](https://github.com/2060-io/hologram-ai-agent) — the agent container + Helm chart (source of truth for the agent-pack schema, env vars, RBAC spec).
+- [`2060-io/hologram-sandbox-agent-example`](https://github.com/2060-io/hologram-sandbox-agent-example) — canonical forkable starter agent (source of truth for the quickstart).
+- [`2060-io/hologram-sandbox-deps`](https://github.com/2060-io/hologram-sandbox-deps) — its organization + avatar dependencies.
 
 ## Contributing
 
