@@ -38,7 +38,17 @@ docker run -p 3001:3001 -p 3000:3000 \
 The easiest flow for requesting a **Verifiable Presentation** is to create an invitation code for a `proof-request`. In this way, users will scan a QR with their Hologram app
 
 
-For starters, we'll ask for a credential issued by our [Demo Chatbot Agent](https://dm.chatbot.demos.2060.io/qr), who will happily issue you a Phone Number credential when you select `Issue Credential` on its contextual menu (TODO: link to Hologram app tutorial about using it with Chatbot demo). Make sure to get a credential of this type in Hologram app before running this flow.
+For starters, we'll ask for any credential the user already holds in their Hologram app. The simplest case is the **Avatar credential** that every Hologram user receives from [`avatar.vs.hologram.zone`](https://avatar.vs.hologram.zone) when they first connect — but the same flow works for any credential definition you trust.
+
+:::tip Get a credential definition id
+The `credentialDefinitionId` for the issuer you want to verify against is published on that issuer's DID document. The fastest way to grab one for testing is to fetch the avatar issuer's DID:
+
+```bash
+curl -s https://avatar.vs.hologram.zone/.well-known/did.json | jq '.verifiableCredential[]'
+```
+
+Look for the `credentialDefinitionId` of an `avatar` schema. Or substitute with the credDef you created in [Issuing Verifiable Credentials](./issue-a-credential.md) — both are W3C-resolvable.
+:::
 
 All we need is to generate a QR code by going to VS Agent's Swagger UI and scroll to [**POST /v1/invitation/presentation-request**](http://localhost:3000/api#/invitation/InvitationController_createPresentationRequest) method.
 
@@ -50,9 +60,9 @@ There we can try it out using the following request body:
   "callbackUrl": "http://your-local-ip:4001/presentations",
   "requestedCredentials": [
     {
-      "credentialDefinitionId": "did:web:dm.chatbot.demos.2060.io?service=anoncreds&relativeRef=/credDef/3YSvM4eydm7V9V5o9nWmVh5wbDi5F6fMGuf4L7hNwFyT",
+      "credentialDefinitionId": "<credential-definition-id from the issuer's did.json>",
       "attributes": [
-        "phoneNumber"
+        "name"
       ]
     }
   ]

@@ -13,6 +13,7 @@ const sidebars = {
     'learn/agents',
     'learn/trust',
     'learn/hologram-app',
+    'learn/ecosystem',
   ],
 
   buildSidebar: [
@@ -84,6 +85,7 @@ const sidebars = {
     'reference/env-vars',
     'reference/admin-api',
     'reference/webhook-events',
+    'reference/glossary',
   ],
 };
 
