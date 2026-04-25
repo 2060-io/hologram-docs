@@ -1,0 +1,80 @@
+# Hologram Docs
+
+> Documentation for building verifiable AI agents on the Hologram ecosystem.
+> Hologram is a verifiable-trust + DIDComm messaging platform with a public
+> trust registry on Verana. Agents are typically built by configuring a
+> single agent-pack.yaml manifest, deployed via Docker Compose locally and
+> Helm in production. Source repos under https://github.com/2060-io/.
+
+This file follows the [llms.txt convention](https://llmstxt.org/) — it
+indexes the most useful entry points for an LLM-driven agent navigating
+this site.
+
+## Learn
+
+- [Introduction](https://docs.hologram.zone/learn/introduction): What Hologram is, the four pillars, who the docs are for.
+- [Agents](https://docs.hologram.zone/learn/agents): What a Hologram agent is — the conversation loop, the Agent Pack, where the LLM fits.
+- [Trust](https://docs.hologram.zone/learn/trust): The verifiable-trust model — VS, VUA, VPR, DIDComm, VCs, Verana.
+- [Hologram app](https://docs.hologram.zone/learn/hologram-app): The end-user app and where to find it.
+- [Ecosystem](https://docs.hologram.zone/learn/ecosystem): Map of the public agents on `vs.hologram.zone` and `demos.hologram.zone` and the source repos behind them.
+
+## Build
+
+- [Quickstart](https://docs.hologram.zone/build/quickstart): Fork-and-ship walkthrough — your first agent in 10 minutes using `hologram-ai-agent-example`.
+- [Agent Pack overview](https://docs.hologram.zone/build/agent-pack/overview): The nine top-level sections of `agent-pack.yaml`.
+
+### Agent Pack reference
+
+- [LLM](https://docs.hologram.zone/build/agent-pack/llm): OpenAI, Anthropic, Ollama, OpenAI-compatible endpoints.
+- [MCP](https://docs.hologram.zone/build/agent-pack/mcp): Model Context Protocol servers, access modes, tool access control.
+- [RBAC](https://docs.hologram.zone/build/agent-pack/rbac): Role-based access control + approval workflows.
+- [Authentication](https://docs.hologram.zone/build/agent-pack/authentication): Verifiable-credential-based authentication flow.
+- [Flows](https://docs.hologram.zone/build/agent-pack/flows): welcome / menu / authentication sub-blocks, action catalog.
+- [i18n](https://docs.hologram.zone/build/agent-pack/i18n): Multi-language config, string-key catalog.
+- [RAG](https://docs.hologram.zone/build/agent-pack/rag): Retrieval-Augmented Generation, vector stores, doc loading.
+- [Memory](https://docs.hologram.zone/build/agent-pack/memory): Conversation memory backends + window sizing.
+- [Examples](https://docs.hologram.zone/build/agent-pack/examples): Nine copy-pasteable Agent Pack snippets.
+
+### Cookbook (end-to-end walkthroughs)
+
+- [Hologram example agent](https://docs.hologram.zone/build/cookbook/hologram-example-agent): The starter pack — Context7 MCP + Avatar auth.
+- [GitHub agent](https://docs.hologram.zone/build/cookbook/github-agent): Per-user MCP pattern with PAT flow.
+- [Wise agent](https://docs.hologram.zone/build/cookbook/wise-agent): Corporate RBAC + approval pattern.
+- [Customer-service agent](https://docs.hologram.zone/build/cookbook/customer-service-agent): Flow-driven structured intake with RAG.
+
+### How-tos
+
+- [Add an MCP server](https://docs.hologram.zone/build/how-to/add-an-mcp-server): Wire a new MCP into your agent.
+- [Issue a credential](https://docs.hologram.zone/build/how-to/issue-a-credential): VS Agent primitive — bare credential issuer.
+- [Verify a credential](https://docs.hologram.zone/build/how-to/verify-a-credential): VS Agent primitive — bare verifier.
+
+### Advanced
+
+- [Bare VS Agent](https://docs.hologram.zone/build/advanced/bare-vs-agent): Run a VS Agent without the chatbot, drive it with your own controller.
+
+## Run
+
+- [Local](https://docs.hologram.zone/run/local): Docker Compose + ngrok + scripts/setup.sh + troubleshooting.
+- [Helm chart](https://docs.hologram.zone/run/kubernetes/helm-chart): Annotated `deployment.yaml`, multi-tenant pattern, secrets policy, observability.
+- [CI/CD](https://docs.hologram.zone/run/ci-cd): The `hologram-verifiable-services` GHA pattern, step-by-step.
+
+## Reference
+
+- [Agent Pack schema](https://docs.hologram.zone/reference/agent-pack-schema): Full field-by-field schema, vendored from upstream.
+- [Environment variables](https://docs.hologram.zone/reference/env-vars): Canonical table grouped by concern.
+- [Admin API](https://docs.hologram.zone/reference/admin-api): VS Agent admin REST API — endpoint groups, message-type catalog.
+- [Webhook events](https://docs.hologram.zone/reference/webhook-events): VS Agent webhook events — three topics with full schemas.
+- [Glossary](https://docs.hologram.zone/reference/glossary): Controlled vocabulary for Hologram, Verana, and the wider VC + DIDComm stack.
+
+## Source repos
+
+- [`hologram-ai-agent-example`](https://github.com/2060-io/hologram-ai-agent-example) — canonical fork-and-ship starter.
+- [`hologram-ai-agent-example-deps`](https://github.com/2060-io/hologram-ai-agent-example-deps) — Organization + Avatar trust dependencies.
+- [`hologram-generic-ai-agent-vs`](https://github.com/2060-io/hologram-generic-ai-agent-vs) — the chatbot engine.
+- [`hologram-verifiable-services`](https://github.com/2060-io/hologram-verifiable-services) — production agents at `vs.hologram.zone`.
+- [`vs-agent`](https://github.com/2060-io/vs-agent) — the DIDComm endpoint container.
+
+## Optional
+
+- [Repository](https://github.com/2060-io/hologram-docs): Source of this docs site.
+- [Contributing](https://github.com/2060-io/hologram-docs/blob/main/CONTRIBUTING.md): How to propose changes.
