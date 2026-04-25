@@ -26,6 +26,24 @@ const sidebars = {
         'build/agent-pack/overview',
         'build/agent-pack/llm',
         'build/agent-pack/mcp',
+        'build/agent-pack/rbac',
+        'build/agent-pack/authentication',
+        'build/agent-pack/flows',
+        'build/agent-pack/i18n',
+        'build/agent-pack/rag',
+        'build/agent-pack/memory',
+        'build/agent-pack/examples',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Cookbook',
+      collapsed: false,
+      items: [
+        'build/cookbook/hologram-example-agent',
+        'build/cookbook/github-agent',
+        'build/cookbook/wise-agent',
+        'build/cookbook/customer-service-agent',
       ],
     },
     {
@@ -58,11 +76,14 @@ const sidebars = {
         'run/kubernetes/helm-chart',
       ],
     },
+    'run/ci-cd',
   ],
 
   referenceSidebar: [
     'reference/agent-pack-schema',
     'reference/env-vars',
+    'reference/admin-api',
+    'reference/webhook-events',
   ],
 };
 

@@ -1,0 +1,8 @@
+{
+  "label": "Cookbook",
+  "position": 4,
+  "link": {
+    "type": "doc",
+    "id": "build/cookbook/hologram-example-agent"
+  }
+}
