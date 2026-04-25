@@ -69,7 +69,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   temperature: 0.2
   agentPrompt: |
     You are the corporate Wise assistant.

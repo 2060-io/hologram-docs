@@ -19,7 +19,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   temperature: 0.3
   agentPrompt: |
     You are a polite, concise assistant.
@@ -43,19 +43,19 @@ languages:
 
 llm:
   provider: ollama
-  model: llama3
+  model: llama3.3
   temperature: 0.3
   agentPrompt: |
     You are a helpful local assistant. Be concise and clear.
 ```
 
-Env: `OLLAMA_ENDPOINT=http://ollama:11434`, `OLLAMA_MODEL=llama3`.
+Env: `OLLAMA_ENDPOINT=http://ollama:11434`, `OLLAMA_MODEL=llama3.3`.
 
 Bring up Ollama alongside the agent:
 
 ```bash
 docker run -d --name ollama -p 11434:11434 -v ollama:/root/.ollama ollama/ollama
-docker exec ollama ollama pull llama3
+docker exec ollama ollama pull llama3.3
 ```
 
 ## 3. OpenAI-compatible endpoint — Kimi / DeepSeek / Groq
@@ -73,7 +73,7 @@ languages:
 
 llm:
   provider: openai
-  model: moonshot-v1-8k
+  model: kimi-k2.6
   baseUrl: https://api.moonshot.cn/v1
   temperature: 0.3
   agentPrompt: |
@@ -119,7 +119,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     Always answer in the user's language. Fallback: English.
 ```
@@ -141,7 +141,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     You answer questions about our product. For any procedural or policy
     question, ALWAYS call rag_retriever first and ground your answer in
@@ -182,7 +182,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     You are a Wise assistant. Use Wise MCP tools to answer questions
     about balances, transfers, and exchange rates.
@@ -226,7 +226,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     You are a GitHub assistant. Use the GitHub MCP tools.
 
@@ -281,7 +281,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     You are the corporate Wise assistant. Use Wise MCP tools.
 
@@ -365,7 +365,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   agentPrompt: |
     You are an official assistant for citizens of Examplestan.
     Only respond to authenticated users.

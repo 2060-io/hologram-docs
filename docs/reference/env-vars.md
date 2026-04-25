@@ -20,12 +20,12 @@ These are the variables consumed by **the chatbot process**. The VS Agent is a s
 |---|---|---|
 | `LLM_PROVIDER` | LLM backend: `openai`, `ollama`, `anthropic` | `ollama` |
 | `OPENAI_API_KEY` | OpenAI (or compat-provider) API key | |
-| `OPENAI_MODEL` | OpenAI model | `gpt-4o-mini` |
+| `OPENAI_MODEL` | OpenAI model | `gpt-5.4-mini` |
 | `OPENAI_TEMPERATURE` | Temperature (0–1) | `0.3` |
 | `OPENAI_MAX_TOKENS` | Max tokens per completion | `512` |
 | `OPENAI_BASE_URL` | Base URL for OpenAI-compatible APIs (Kimi, DeepSeek, Groq, Together AI, …) | |
 | `OLLAMA_ENDPOINT` | Ollama endpoint | `http://ollama:11434` |
-| `OLLAMA_MODEL` | Ollama model | `llama3` |
+| `OLLAMA_MODEL` | Ollama model | `llama3.3` |
 | `ANTHROPIC_API_KEY` | Anthropic API key | |
 | `AGENT_PROMPT` | Override `llm.agentPrompt` at runtime | |
 

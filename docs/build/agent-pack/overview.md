@@ -49,7 +49,7 @@ Any string value can reference environment variables with `${VAR}` syntax. The a
 ```yaml
 llm:
   provider: openai
-  model: ${OPENAI_MODEL:-gpt-4o-mini}
+  model: ${OPENAI_MODEL:-gpt-5.4-mini}
   temperature: 0.2
 
 mcp:
@@ -88,7 +88,7 @@ languages:
 
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
 ```
 
 Drop this at `agent-packs/hello-agent/agent-pack.yaml`, set `AGENT_PACK_PATH=./agent-packs/hello-agent` and `OPENAI_API_KEY=…`, and you've got an agent.
