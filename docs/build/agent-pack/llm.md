@@ -8,7 +8,7 @@ The agent's brain is whatever you plug into the `llm` section of the agent pack.
 |---|---|---|---|
 | **OpenAI** | `openai` | `gpt-5.5`, `gpt-5.4-mini`, `gpt-5.4-nano` | `OPENAI_API_KEY` |
 | **Anthropic** | `anthropic` | `claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5` | `ANTHROPIC_API_KEY` |
-| **Ollama** | `ollama` | `llama3.3`, `qwen3`, `mistral`, `gemma3`, any pulled model | `OLLAMA_ENDPOINT`, `OLLAMA_MODEL` |
+| **Ollama** | `ollama` | `llama3.3`, `qwen3`, `mistral`, `gemma3`, `kimi-k2.5`, any pulled model | `OLLAMA_ENDPOINT`, `OLLAMA_MODEL` |
 
 ## OpenAI
 
@@ -75,6 +75,16 @@ llm:
 ```
 
 `OPENAI_API_KEY` = your Moonshot API key.
+
+Model variants available on Moonshot's API:
+
+| Model | Notes |
+|---|---|
+| `kimi-k2.6` | Flagship (April 2026). 1T params / 32B active, 256K context, thinking mode enabled by default. Best for long-horizon coding and agent workflows. |
+| `kimi-k2.5-preview` | January 2026 release. Introduced Agent Swarm + multimodal reasoning. |
+| `kimi-k2-instruct` | Original Kimi K2 (July 2025). Non-thinking mode, lower latency. |
+
+Kimi K2 is **open-weight** — if you'd rather self-host, pull the weights through Ollama (`ollama pull kimi-k2.5`) and switch `provider: ollama`.
 
 ### DeepSeek
 
