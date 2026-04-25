@@ -72,7 +72,7 @@ The **public artefact** an issuer publishes that defines the schema + revocation
 
 ### DID (Decentralised Identifier)
 
-A **W3C URI** that resolves to a DID document containing public keys, service endpoints, and (in the Hologram stack) Linked Verifiable Presentations. `did:web` is the default for VS Agents (`did:web:my-agent.demos.hologram.zone`); `did:webvh` is supported for verifiable-history use cases.
+A **W3C URI** that resolves to a DID document containing public keys, service endpoints, and (in the Hologram stack) Linked Verifiable Presentations. VS Agents use [`did:webvh`](https://identity.foundation/didwebvh/) (e.g. `did:webvh:my-agent.demos.hologram.zone`) — the verifiable-history DID method, which provides tamper-evident DID document history on top of HTTPS hosting.
 
 ### DIDComm
 
@@ -180,7 +180,7 @@ The Helm value used to **run multiple agents in one namespace** without resource
 
 ### ngrok
 
-The **localhost-tunnelling tool** the local dev flow uses to expose the VS Agent at a public DID-resolvable URL. Required because `did:web:localhost` won't trust-resolve. See [**Run locally**](../run/local.md).
+The **localhost-tunnelling tool** the local dev flow uses to expose the VS Agent at a public DID-resolvable URL. Required because `did:webvh:localhost` won't trust-resolve. See [**Run locally**](../run/local.md).
 
 ### Service credential
 

@@ -5,11 +5,12 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
 /* -------------------------------------------------------------------------- *
- *  Homepage — design language locked to hologram.zone.
+ *  Homepage — classic documentation-site layout.
  *
  *  Sections (top → bottom):
- *    1. Hero          — pill + gradient headline + dual CTA, on a
- *                       bg-grid + hero-glow backdrop.
+ *    1. Hero          — product-name headline ("Hologram Developer
+ *                       Documentation") + descriptive subtitle + two CTAs,
+ *                       on a bg-grid + hero-glow backdrop.
  *    2. Three pillars — Learn / Build / Run, as cards.
  *    3. Quickstart    — fork-and-go callout with a code-window mock
  *                       of agent-pack.yaml.
@@ -208,7 +209,7 @@ function CodeWindow() {
           {'\n  '}
           <span className={styles.codeKey}>model</span>
           {': '}
-          <span className={styles.codeStr}>gpt-4o-mini</span>
+          <span className={styles.codeStr}>gpt-5.4-mini</span>
           {'\n\n'}
           <span className={styles.codeKey}>mcp</span>
           {':\n  '}
@@ -248,29 +249,24 @@ function Hero() {
     <section className={`${styles.hero} hero-glow`}>
       <div className={`${styles.heroGrid} bg-grid`} aria-hidden="true" />
       <div className={styles.heroInner}>
-        <span className={`pill ${styles.heroPill}`}>
-          <span className="pill-dot" aria-hidden="true" />
-          Hologram Docs · Apache 2.0 · Built on Verana
-        </span>
         <h1 className={`h-display ${styles.heroTitle}`}>
-          Build verifiable <br />
-          <span className="gradient-text">AI agents</span> on Hologram.
+          Hologram Developer <br />
+          <span className="gradient-text">Documentation</span>
         </h1>
         <p className={styles.heroLead}>
-          One YAML manifest. Open infrastructure. Cryptographic proof of who is on
-          the other end of every conversation. Ship in ten minutes, scale to
-          millions of users.
+          Build, deploy, and run verifiable AI agents on the Hologram
+          network. Concepts, tutorials, and reference for engineers.
         </p>
         <div className={styles.heroCtas}>
           <Link
             className="button button--primary"
             to="/docs/build/quickstart">
-            Start the quickstart
+            Get started
           </Link>
           <Link
             className="button button--secondary"
             to="/docs/learn/introduction">
-            What is Hologram?
+            Read the introduction
           </Link>
         </div>
       </div>

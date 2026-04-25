@@ -27,7 +27,7 @@ It's the canonical "Hello World" for the platform, and the starter every other c
        ▼
 ┌──────────────────────────────────────────────────────────┐
 │  Chatbot (LLM, MCP client)                               │
-│   ├─ OpenAI gpt-4o-mini                                  │
+│   ├─ OpenAI gpt-5.4-mini                                  │
 │   ├─ Context7 MCP (docs lookup)                          │
 │   ├─ Redis (memory + RAG vector store)                   │
 │   └─ PostgreSQL (sessions, MCP user config)              │
@@ -84,7 +84,7 @@ The `{userName}` placeholder is filled in from the DIDComm Profile message. If t
 ```yaml
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   temperature: 0.3
   agentPrompt: |
     You are Holo, the Hologram Example Agent…
@@ -95,7 +95,7 @@ llm:
     - Language: answer in the user's language. Fallback: English.
 ```
 
-`gpt-4o-mini` is a good default — fast, cheap, solid tool calling. Swap to `gpt-4o`, an Anthropic model, or a local Ollama if you prefer (see [**LLM providers**](../agent-pack/llm.md)).
+`gpt-5.4-mini` is a good default — fast, cheap, solid tool calling. Swap to `gpt-5.5`, an Anthropic model, or a local Ollama if you prefer (see [**LLM providers**](../agent-pack/llm.md)).
 
 ### Authentication
 
@@ -210,7 +210,7 @@ The example is opinionated on purpose:
 - **One `agent-pack.yaml`.** Everything declarative. Mount it as a ConfigMap in K8s; restart to roll out.
 - **One `deployment.yaml`.** All Helm values for K8s. No spread of secrets across config files.
 - **One Helm chart.** `hologram-generic-ai-agent-chart` covers chatbot + VS Agent + Redis + PostgreSQL.
-- **Sensible defaults.** OpenAI gpt-4o-mini, English, Context7, Avatar auth — all things you can swap, but they Just Work out of the box.
+- **Sensible defaults.** OpenAI gpt-5.4-mini, English, Context7, Avatar auth — all things you can swap, but they Just Work out of the box.
 
 When this template is no longer the right shape — you need a custom flow that the LLM can't express, a credential issuer beyond the agent's scope, a multi-region deployment — you can graduate to running the deps yourself, then the chatbot itself, then your own fork of the chatbot service. But most agents don't need to.
 

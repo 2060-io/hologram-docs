@@ -103,7 +103,7 @@ languages:
 | Field          | Type           | Env override          | Default      | Description                          |
 | -------------- | -------------- | --------------------- | ------------ | ------------------------------------ |
 | `provider`     | string         | `LLM_PROVIDER`        | `openai`     | LLM provider (`openai`, `ollama`, `anthropic`). Use `openai` for any OpenAI-compatible API. |
-| `model`        | string         | `OPENAI_MODEL`        | `gpt-4o-mini`| Model name.                          |
+| `model`        | string         | `OPENAI_MODEL`        | `gpt-5.4-mini`| Model name.                          |
 | `temperature`  | number/string  | `OPENAI_TEMPERATURE`  | `0.3`        | Sampling temperature (0–1).          |
 | `maxTokens`    | number/string  | `OPENAI_MAX_TOKENS`   | `512`        | Max tokens per completion.           |
 | `baseUrl`      | string         | `OPENAI_BASE_URL`     | —            | Base URL for OpenAI-compatible APIs (e.g., Kimi, DeepSeek, Groq, Together AI). |
@@ -113,7 +113,7 @@ languages:
 ```yaml
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   temperature: 0.3
   maxTokens: 1000
   agentPrompt: |
@@ -128,25 +128,25 @@ Any API that follows the OpenAI chat completions format can be used by setting `
 # Kimi (Moonshot AI)
 llm:
   provider: openai
-  model: moonshot-v1-8k
+  model: kimi-k2.6
   baseUrl: https://api.moonshot.cn/v1
 
 # DeepSeek
 llm:
   provider: openai
-  model: deepseek-chat
+  model: deepseek-v4-flash
   baseUrl: https://api.deepseek.com
 
 # Groq
 llm:
   provider: openai
-  model: llama-3.3-70b-versatile
+  model: openai/gpt-oss-120b
   baseUrl: https://api.groq.com/openai/v1
 
 # Together AI
 llm:
   provider: openai
-  model: meta-llama/Llama-3-70b-chat-hf
+  model: meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8
   baseUrl: https://api.together.xyz/v1
 ```
 
@@ -665,7 +665,7 @@ Configures image-to-text description (vision). When enabled, incoming image `Med
 | ----------- | ------ | ---------------- | --------------------------------------------------------------------------------------------------- |
 | `name`      | string | —                | Unique provider name (for logging).                                                                 |
 | `type`      | string | —                | Provider type: `openai-vision` (OpenAI cloud) or `openai-compatible-vision` (self-hosted endpoint). |
-| `model`     | string | `gpt-4o-mini`    | Vision-capable model name (e.g. `gpt-4o`, `gpt-4o-mini`, `gpt-4.1-mini`).                           |
+| `model`     | string | `gpt-5.4-mini`    | Vision-capable model name (e.g. `gpt-5.5`, `gpt-5.4-mini`, `gpt-5.4-nano`).                           |
 | `apiKeyEnv` | string | `OPENAI_API_KEY` | Environment variable name containing the API key.                                                   |
 | `baseUrl`   | string | —                | Base URL for OpenAI-compatible endpoints (e.g. `https://my-llm.example.com/v1`).                    |
 | `prompt`    | string | built-in concise-description prompt | Prompt used when asking the model to describe the image. Useful to tune verbosity or domain focus. |
@@ -682,7 +682,7 @@ vision:
   provider:
     name: vision
     type: openai-vision
-    model: gpt-4o-mini
+    model: gpt-5.4-mini
     detail: auto
     # apiKeyEnv: OPENAI_API_KEY  # default
 

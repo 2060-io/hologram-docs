@@ -28,14 +28,14 @@ The agent **does not** answer the case, solve it, or claim a resolution time. It
 
 ## How it works — flow-by-prompt
 
-There's no flow engine in the YAML. The 8-step flow is encoded **in the LLM's `agentPrompt`** as explicit, numbered rules. The LLM follows the script literally because GPT-4 / GPT-4o is more than capable of running deterministic dialogue when prompted that way.
+There's no flow engine in the YAML. The 8-step flow is encoded **in the LLM's `agentPrompt`** as explicit, numbered rules. The LLM follows the script literally because GPT-5.5 is more than capable of running deterministic dialogue when prompted that way.
 
 Excerpt from the pack:
 
 ```yaml
 llm:
   provider: openai
-  model: gpt-4
+  model: gpt-5.5
   temperature: 0.2
   agentPrompt: |-
     ROLE OF THE AGENT
@@ -89,7 +89,7 @@ Two reasons:
 1. **Natural language inputs.** "I'd like to complain about late delivery" is hard to capture in a fixed UI form, easy for the LLM. Same for the user's variation: *"the package, three weeks ago, never arrived"* mapped onto Subject + Message.
 2. **Languages.** A YAML flow engine would need translated prompts per language. The LLM handles language detection and per-language tone for free.
 
-The trade-off: the LLM occasionally veers (rarely with GPT-4 + low temperature). The fix is more rigorous prompting, not more code.
+The trade-off: the LLM occasionally veers (rarely with GPT-5.5 + low temperature). The fix is more rigorous prompting, not more code.
 
 ## RAG — for ad-hoc clarifications
 
@@ -222,7 +222,7 @@ The general recipe:
 
 - **No persistence beyond chat memory.** The agent generates a case number but doesn't write the case to a real ticketing system. In production, add a downstream tool (an MCP server, an HTTP tool via `tools.dynamicConfig`) that stores the case.
 - **Case-number quality.** The LLM generates `CASE-XXXXXXXX` randomly; collisions are rare but possible. Production deployments should generate the ID server-side and inject it via a tool call.
-- **No flow validation.** If the LLM ever skips a step, there's no "you must answer step 3 first" enforcement at the runtime layer. GPT-4 + the explicit prompt make this a non-issue in practice; for higher-stakes flows, expect to fork the chatbot and add a state machine.
+- **No flow validation.** If the LLM ever skips a step, there's no "you must answer step 3 first" enforcement at the runtime layer. GPT-5.5 + the explicit prompt make this a non-issue in practice; for higher-stakes flows, expect to fork the chatbot and add a state machine.
 
 ## Where to look next
 

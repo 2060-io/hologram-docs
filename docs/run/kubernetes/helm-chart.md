@@ -43,7 +43,7 @@ chatbot:
     - name: LLM_PROVIDER
       value: openai
     - name: OPENAI_MODEL
-      value: gpt-4o-mini
+      value: gpt-5.4-mini
     - name: VS_AGENT_ADMIN_URL
       value: 'http://example-agent.{{ .Release.Namespace }}:3000'
     - name: CREDENTIAL_DEFINITION_ID

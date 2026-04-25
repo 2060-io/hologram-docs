@@ -6,16 +6,16 @@ The agent's brain is whatever you plug into the `llm` section of the agent pack.
 
 | Provider | `llm.provider` | Typical models | What you need |
 |---|---|---|---|
-| **OpenAI** | `openai` | `gpt-4o`, `gpt-4o-mini`, `gpt-4.1-mini`, `o3-mini` | `OPENAI_API_KEY` |
-| **Anthropic** | `anthropic` | `claude-3-5-sonnet-latest`, `claude-3-5-haiku-latest`, `claude-opus-4` | `ANTHROPIC_API_KEY` |
-| **Ollama** | `ollama` | `llama3`, `qwen2.5`, `mistral`, `gemma2`, any pulled model | `OLLAMA_ENDPOINT`, `OLLAMA_MODEL` |
+| **OpenAI** | `openai` | `gpt-5.5`, `gpt-5.4-mini`, `gpt-5.4-nano` | `OPENAI_API_KEY` |
+| **Anthropic** | `anthropic` | `claude-opus-4-7`, `claude-sonnet-4-6`, `claude-haiku-4-5` | `ANTHROPIC_API_KEY` |
+| **Ollama** | `ollama` | `llama3.3`, `qwen3`, `mistral`, `gemma3`, `kimi-k2.5`, any pulled model | `OLLAMA_ENDPOINT`, `OLLAMA_MODEL` |
 
 ## OpenAI
 
 ```yaml
 llm:
   provider: openai
-  model: gpt-4o-mini
+  model: gpt-5.4-mini
   temperature: 0.2
   maxTokens: 1000
   agentPrompt: |
@@ -29,7 +29,7 @@ Env: `OPENAI_API_KEY=sk-proj-…`. Everything else has sensible defaults.
 ```yaml
 llm:
   provider: anthropic
-  model: claude-3-5-sonnet-latest
+  model: claude-sonnet-4-6
   temperature: 0.2
   agentPrompt: |
     You are a concise, polite assistant.
@@ -44,7 +44,7 @@ Runs entirely on your machine. Zero external API calls.
 ```yaml
 llm:
   provider: ollama
-  model: llama3
+  model: llama3.3
   temperature: 0.3
 ```
 
@@ -54,7 +54,7 @@ Bring Ollama up alongside the chatbot:
 
 ```bash
 docker run -d --name ollama -p 11434:11434 -v ollama:/root/.ollama ollama/ollama
-docker exec ollama ollama pull llama3
+docker exec ollama ollama pull llama3.3
 ```
 
 Ollama is great for privacy-sensitive deployments (nothing leaves your host) but tool-calling support varies by model — check the [upstream Ollama tool-calling list](https://ollama.com/search?c=tools) if you're using MCP or dynamic HTTP tools.
@@ -70,18 +70,28 @@ Any service that exposes the OpenAI `/v1/chat/completions` API (and, ideally, `/
 ```yaml
 llm:
   provider: openai
-  model: moonshot-v1-8k
+  model: kimi-k2.6
   baseUrl: https://api.moonshot.cn/v1
 ```
 
 `OPENAI_API_KEY` = your Moonshot API key.
+
+Model variants available on Moonshot's API:
+
+| Model | Notes |
+|---|---|
+| `kimi-k2.6` | Flagship (April 2026). 1T params / 32B active, 256K context, thinking mode enabled by default. Best for long-horizon coding and agent workflows. |
+| `kimi-k2.5-preview` | January 2026 release. Introduced Agent Swarm + multimodal reasoning. |
+| `kimi-k2-instruct` | Original Kimi K2 (July 2025). Non-thinking mode, lower latency. |
+
+Kimi K2 is **open-weight** — if you'd rather self-host, pull the weights through Ollama (`ollama pull kimi-k2.5`) and switch `provider: ollama`.
 
 ### DeepSeek
 
 ```yaml
 llm:
   provider: openai
-  model: deepseek-chat
+  model: deepseek-v4-flash
   baseUrl: https://api.deepseek.com
 ```
 
@@ -92,7 +102,7 @@ llm:
 ```yaml
 llm:
   provider: openai
-  model: llama-3.3-70b-versatile
+  model: openai/gpt-oss-120b
   baseUrl: https://api.groq.com/openai/v1
 ```
 
@@ -103,7 +113,7 @@ llm:
 ```yaml
 llm:
   provider: openai
-  model: meta-llama/Llama-3-70b-chat-hf
+  model: meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8
   baseUrl: https://api.together.xyz/v1
 ```
 
@@ -114,7 +124,7 @@ llm:
 ```yaml
 llm:
   provider: openai
-  model: mistralai/Mixtral-8x7B-Instruct-v0.1
+  model: meta-llama/Llama-4-Scout-17B-16E-Instruct
   baseUrl: https://my-vllm.internal/v1
 ```
 
@@ -126,11 +136,11 @@ Rules of thumb based on typical Hologram agent workloads:
 
 | Priority | Pick |
 |---|---|
-| **Ship fast, zero ops** | `openai` + `gpt-4o-mini`. Cheap, fast, solid tool calling. |
-| **Tool-call reliability for MCP-heavy agents** | `openai` + `gpt-4o` or `o3-mini`. Best function calling in practice. |
-| **Long documents / RAG corpora** | `anthropic` + `claude-3-5-sonnet-latest`. Large context window, good at citations. |
-| **Privacy / air-gapped** | `ollama` + `qwen2.5:14b` (or a 70B on a GPU host). |
-| **Cheapest cloud** | Groq `llama-3.3-70b-versatile`, DeepSeek `deepseek-chat`. |
+| **Ship fast, zero ops** | `openai` + `gpt-5.4-mini`. Cheap, fast, solid tool calling. |
+| **Tool-call reliability for MCP-heavy agents** | `openai` + `gpt-5.5`. Best function calling in practice. |
+| **Long documents / RAG corpora** | `anthropic` + `claude-sonnet-4-6` (or `claude-opus-4-7` for maximum reasoning). 200k context window, excellent at citations. |
+| **Privacy / air-gapped** | `ollama` + `qwen3:14b` (or a 70B on a GPU host). |
+| **Cheapest cloud** | Groq `openai/gpt-oss-120b`, DeepSeek `deepseek-v4-flash`. |
 | **EU residency** | DeepSeek (Asia) or self-hosted — Anthropic+OpenAI are US-only by default. |
 
 The pack is YAML — keep a few LLM profiles in your repo and switch by changing the active `agent-pack.yaml` or by `${LLM_PROVIDER}` / `${OPENAI_BASE_URL}` env overrides at deploy time.
